@@ -8,16 +8,34 @@ public class PlayerMovement : MonoBehaviour
 	public float jumpForce = 5f;
 	public float wallJumpForce = 5f;
 	public float wallJumpHorizontalForce = 5f;
+	public float inertia = 0.99f;
+	public bool jumpRequested = false;
+	
+	private float moveX;
 
 	[SerializeField]
 	private bool isJumping = false;
 
 	[SerializeField]
 	private bool isWallJumping = false;
+
+	[SerializeField]
 	private Rigidbody2D rb;
+
+	[SerializeField]
 	private Collider2D playerCollider;
+
+	[SerializeField]
 	private LayerMask groundLayer;
+
+	[SerializeField]
 	private LayerMask wallLayer;
+
+	[SerializeField]
+	private RaycastHit2D rightRaycast;
+
+	[SerializeField]
+	private RaycastHit2D leftRaycast;
 
 	private void Start()
 	{
@@ -29,35 +47,34 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Update()
 	{
-		float moveX = Input.GetAxis("Horizontal");
+		moveX = Input.GetAxisRaw("Horizontal");
+		if (Input.GetButtonDown("Jump"))
+		{
+			jumpRequested = true;
+		}
+	}
 
-		// Move the player horizontally
-		rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+	private void FixedUpdate()
+	{
+		// Move the player horizontally on the ground
+		if (moveX != 0)
+			rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+		// If the player is not moving horizontally on the ground, slow down the player gradually to a stop
+		else
+			rb.velocity = new Vector2(rb.velocity.x * inertia, rb.velocity.y);
 
 		// Jumping
-		if (Input.GetButtonDown("Jump"))
+		if (jumpRequested)
 		{
 			if (IsGrounded())
 			{
 				Jump();
 			}
-			else if (IsTouchingWall())
+			else if (IsTouchingWall(out rightRaycast, out leftRaycast))
 			{
-				WallJump();
+				WallJump(rightRaycast, leftRaycast);
 			}
-		}
-	}
-
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		// Reset jump state when touching the ground
-		if (collision.gameObject.CompareTag("Ground"))
-		{
-			if (IsGrounded())
-			{
-				isJumping = false;
-				isWallJumping = false;
-			}
+			jumpRequested = false;
 		}
 	}
 
@@ -74,13 +91,28 @@ public class PlayerMovement : MonoBehaviour
 		isJumping = true;
 	}
 
-	private void WallJump()
+	private void WallJump(RaycastHit2D rightRaycast, RaycastHit2D leftRaycast)
 	{
 		// Calculate wall jump direction
-		float wallJumpDirection = Input.GetAxis("Horizontal") < 0 ? 1f : -1f;
+		float wallJumpDirection = 0;
+
+		if (rightRaycast.collider != null)
+		{
+			wallJumpDirection = -1f;
+		}
+		else if (leftRaycast.collider != null)
+		{
+			wallJumpDirection = 1f;
+		}
+
+		// Reset velocity
+		rb.velocity = new Vector2(0f, 0f);
 
 		// Apply wall jump force
-		rb.velocity = new Vector2(wallJumpHorizontalForce * wallJumpDirection, jumpForce);
+		rb.AddForce(
+			new Vector2(wallJumpHorizontalForce * wallJumpDirection, wallJumpForce),
+			ForceMode2D.Impulse
+		);
 		isJumping = true;
 		isWallJumping = true;
 	}
@@ -114,11 +146,11 @@ public class PlayerMovement : MonoBehaviour
 		return isGrounded;
 	}
 
-	private bool IsTouchingWall()
+	private bool IsTouchingWall(out RaycastHit2D rightRaycast, out RaycastHit2D leftRaycast)
 	{
 		// Check if the player is touching a wall
 		float extraWidth = 0.01f;
-		
+
 		// Start at right side of the player
 		Vector2 raycastStartRight =
 			playerCollider.bounds.center + new Vector3(playerCollider.bounds.extents.x, 0, 0);
@@ -159,7 +191,10 @@ public class PlayerMovement : MonoBehaviour
 			Debug.Log("Left raycast hit: " + raycastHitLeft.collider.gameObject.name);
 			Debug.DrawLine(raycastStartLeft, raycastEndLeft, Color.green, 2f);
 		}
-		
+
+		rightRaycast = raycastHitRight;
+		leftRaycast = raycastHitLeft;
+
 		bool isTouchingWall = raycastHitRight.collider != null || raycastHitLeft.collider != null;
 		return isTouchingWall;
 	}

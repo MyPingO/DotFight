@@ -164,7 +164,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
+  wallJumpForce: 10
+  wallJumpHorizontalForce: 4
   isJumping: 0
+  isWallJumping: 0
+  rb: {fileID: 0}
+  playerCollider: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &5305183636847781468
 PrefabInstance:
   m_ObjectHideFlags: 0
