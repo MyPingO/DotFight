@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4197269417284567541}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4046146806188354528
 MonoBehaviour:
@@ -165,11 +165,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
-  wallJumpForce: 10
-  wallJumpHorizontalForce: 4
+  wallJumpForce: 8
+  wallJumpHorizontalForce: 6
+  inertia: 0.9
+  jumpRequested: 0
+  movementDisabled: 0
+  airControlSmoothing: 15
+  moveX: 0
   isJumping: 0
   isWallJumping: 0
-  rb: {fileID: 0}
+  rigidBody: {fileID: 0}
   playerCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
