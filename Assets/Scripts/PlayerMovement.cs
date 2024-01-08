@@ -23,8 +23,12 @@ public class PlayerMovement : MonoBehaviour
 
 	[SerializeField]
 	private bool isWallJumping = false;
+
 	[SerializeField]
 	private bool isGrounded = false;
+
+	[SerializeField]
+	private bool canAirJump = true; // New variable to save the jump
 
 	[SerializeField]
 	private Rigidbody2D rigidBody;
@@ -63,22 +67,22 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Update()
 	{
-		if (rigidBody.velocity.x > 7) {
-			print(rigidBody.velocity.x);
-			print(Time.deltaTime);
-		}
-		
 		float moveXInput = Input.GetAxisRaw("Horizontal");
-		if (IsGrounded())
+		if (IsGrounded()) 
+		{
 			moveX = moveXInput; //Snappy movement on the ground and wall
+			canAirJump = true;
+		}
 		else
 		{
 			// if player is holding left or right in air
-			if (moveXInput != 0) moveX += moveXInput * Time.deltaTime * airControlSmoothing; // apply smoothed movement in the air
-			else moveX = 0;
+			if (moveXInput != 0)
+				moveX += moveXInput * Time.deltaTime * airControlSmoothing; // apply smoothed movement in the air
+			else
+				moveX = 0;
 		}
 
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButton("Jump"))
 		{
 			jumpRequested = true;
 		}
@@ -94,7 +98,8 @@ public class PlayerMovement : MonoBehaviour
 		if (moveX != 0f)
 			rigidBody.velocity = new Vector2(moveX * moveSpeed, rigidBody.velocity.y);
 		// If the player is not moving horizontally, slow down the player gradually to a stop
-		else rigidBody.velocity = new Vector2(rigidBody.velocity.x * inertia, rigidBody.velocity.y);
+		else
+			rigidBody.velocity = new Vector2(rigidBody.velocity.x * inertia, rigidBody.velocity.y);
 
 		// Jumping
 		if (jumpRequested)
@@ -102,16 +107,21 @@ public class PlayerMovement : MonoBehaviour
 			if (isGrounded)
 			{
 				Jump();
+				canAirJump = false;
 			}
 			else if (IsTouchingWall())
 			{
 				WallJump(rightRaycast, leftRaycast);
 				StartCoroutine(DisableMovementAfterWallJump());
 			}
+			else if (canAirJump)
+			{
+				Jump();
+				canAirJump = false;
+			}
 			jumpRequested = false;
 		}
 	}
-
 
 	private void Jump()
 	{
@@ -121,12 +131,10 @@ public class PlayerMovement : MonoBehaviour
 		{
 			rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
 		}
-		// Apply the jump force with additional force
-		//rigidBody.AddForce(new Vector2(0f, jumpForce + additionalJumpForce), ForceMode2D.Impulse);
-		
-		// Instead of add force to the rigidbody, we can also set the velocity directly
+
+		// Set jump velocity
 		rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce + additionalJumpForce);
-		
+
 		isJumping = true;
 	}
 
@@ -148,14 +156,11 @@ public class PlayerMovement : MonoBehaviour
 		rigidBody.velocity = new Vector2(0f, 0f);
 		moveX = 0;
 
-		// --Apply wall jump force-- //
-		// rigidBody.AddForce(
-		// 	new Vector2(wallJumpHorizontalForce * wallJumpDirection, wallJumpForce),
-		// 	ForceMode2D.Impulse
-		// );
-		
-		// Instead of add force to the rigidbody, we can also set the velocity directly
-		rigidBody.velocity = new Vector2(wallJumpHorizontalForce * wallJumpDirection, wallJumpForce);
+		// Set walljump velocity
+		rigidBody.velocity = new Vector2(
+			wallJumpHorizontalForce * wallJumpDirection,
+			wallJumpForce
+		);
 
 		isJumping = true;
 		isWallJumping = true;
@@ -168,37 +173,36 @@ public class PlayerMovement : MonoBehaviour
 
 		// --*IMPORTANT*-- //
 		// set the player's moveX input to be the same as the player's current
-		// velocity on the x-axis to keep horizontal momentum
+		// velocity on the x-axis to prevent resetting the player's momentum
 		moveX = rigidBody.velocity.x;
 		movementDisabled = false;
 	}
-	
+
 	private bool IsGrounded()
 	{
 		// Check if the bottom of the player touches the ground
 		float extraHeight = 0.1f;
 		Vector2 raycastStart =
 			playerCollider.bounds.center - new Vector3(0, playerCollider.bounds.extents.y, 0);
-		Vector2 raycastEnd =
-			raycastStart + Vector2.down * (playerCollider.bounds.extents.y + extraHeight);
+		// Vector2 raycastEnd = raycastStart + Vector2.down * extraHeight;
 
 		// Drawing the line for a duration of 2 seconds with a red color
-		Debug.DrawLine(raycastStart, raycastEnd, Color.red, 2f);
+		// Debug.DrawLine(raycastStart, raycastEnd, Color.red, 2f);
 
 		RaycastHit2D raycastHit = Physics2D.Raycast(
 			raycastStart,
 			Vector2.down,
-			playerCollider.bounds.extents.y + extraHeight,
+			extraHeight,
 			groundLayer
 		);
-		bool grounded = raycastHit.collider != null;
-		isGrounded = grounded;
 
-		// If the ray hits the ground, draw a green line
-		if (isGrounded)
-		{
-			Debug.DrawLine(raycastStart, raycastEnd, Color.green, 2f);
-		}
+		isGrounded = raycastHit.collider != null;
+
+		// // If the ray hits the ground, draw a green line
+		// if (isGrounded)
+		// {
+		//     Debug.DrawLine(raycastStart, raycastEnd, Color.green, 2f);
+		// }
 
 		return isGrounded;
 	}
@@ -211,16 +215,16 @@ public class PlayerMovement : MonoBehaviour
 		// Start at right side of the player
 		Vector2 raycastStartRight =
 			playerCollider.bounds.center + new Vector3(playerCollider.bounds.extents.x, 0, 0);
-		Vector2 raycastEndRight = raycastStartRight + Vector2.right * extraWidth;
+		// Vector2 raycastEndRight = raycastStartRight + Vector2.right * extraWidth;
 
 		// Start at left side of the player
 		Vector2 raycastStartLeft =
 			playerCollider.bounds.center - new Vector3(playerCollider.bounds.extents.x, 0, 0);
-		Vector2 raycastEndLeft = raycastStartLeft - Vector2.right * extraWidth;
+		// Vector2 raycastEndLeft = raycastStartLeft - Vector2.right * extraWidth;
 
 		// Drawing the lines for a duration of 2 seconds with a red color assuming it doesn't hit anything
-		Debug.DrawLine(raycastStartRight, raycastEndRight, Color.red, 2f);
-		Debug.DrawLine(raycastStartLeft, raycastEndLeft, Color.red, 2f);
+		// Debug.DrawLine(raycastStartRight, raycastEndRight, Color.red, 2f);
+		// Debug.DrawLine(raycastStartLeft, raycastEndLeft, Color.red, 2f);
 
 		// Throw a raycast to the right and left of the player
 		RaycastHit2D raycastHitRight = Physics2D.Raycast(
