@@ -7,6 +7,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public float moveSpeed = 5f;
+	public float runSpeed = 5f;
+	public float walkSpeed = 2.5f;
 	public float jumpForce = 5f;
 	public float wallJumpForce = 5f;
 	public float wallJumpHorizontalForce = 5f;
@@ -18,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField]
 	private float moveX = 0f;
 
+	[SerializeField]
+	private bool isWalking = false;
+	
 	[SerializeField]
 	private bool isJumping = false;
 
@@ -82,9 +87,18 @@ public class PlayerMovement : MonoBehaviour
 				moveX = 0;
 		}
 
-		if (Input.GetButton("Jump"))
+		if (Input.GetButtonDown("Jump"))
 		{
 			jumpRequested = true;
+		}
+		// If Left Shift
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			moveSpeed = walkSpeed;
+		}
+		if (Input.GetKeyUp(KeyCode.LeftShift))
+		{
+			moveSpeed = runSpeed;
 		}
 	}
 
