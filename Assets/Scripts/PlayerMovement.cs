@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float moveSpeed = 5f;
-	public float runSpeed = 5f;
-	public float walkSpeed = 2.5f;
-	public float jumpForce = 5f;
-	public float wallJumpForce = 5f;
-	public float wallJumpHorizontalForce = 5f;
+	[SerializeField] private float moveSpeed = 5f;
+	[SerializeField] private float runSpeed = 5f;
+	[SerializeField] private float walkSpeed = 2.5f;
+	[SerializeField] private float jumpForce = 5f;
+	[SerializeField] private float wallJumpForce = 5f;
+	[SerializeField] private float horizontalWallJumpForce = 5f;
 	public float inertia = 0.99f;
 	public bool jumpRequested = false;
 	public bool movementDisabled = false;
@@ -92,10 +92,12 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.LeftShift))
 		{
 			moveSpeed = walkSpeed;
+			isWalking = true;
 		}
 		if (Input.GetKeyUp(KeyCode.LeftShift))
 		{
 			moveSpeed = runSpeed;
+			isWalking = false;
 		}
 	}
 
@@ -169,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
 
 		// Set walljump velocity
 		rigidBody.velocity = new Vector2(
-			wallJumpHorizontalForce * wallJumpDirection,
+			horizontalWallJumpForce * wallJumpDirection,
 			wallJumpForce
 		);
 
@@ -270,4 +272,51 @@ public class PlayerMovement : MonoBehaviour
 		bool isTouchingWall = raycastHitRight.collider != null || raycastHitLeft.collider != null;
 		return isTouchingWall;
 	}
+	
+	public float GetRunSpeed()
+	{
+		return runSpeed;
+	}
+	public void SetRunSpeed(float newRunSpeed)
+	{
+		runSpeed = newRunSpeed;
+	}
+	
+	public float GetWalkSpeed()
+	{
+		return walkSpeed;
+	}
+	public void SetWalkSpeed(float newWalkSpeed)
+	{
+		walkSpeed = newWalkSpeed;
+	}
+	public float GetJumpForce()
+	{
+		return jumpForce;
+	}
+	public void SetJumpForce(float newJumpForce)
+	{
+		jumpForce = newJumpForce;
+	}
+	public float GetWallJumpForce()
+	{
+		return wallJumpForce;
+	}
+	public void SetWallJumpForce(float newWallJumpForce)
+	{
+		wallJumpForce = newWallJumpForce;
+	}
+	public float GetHorizontalWallJumpForce()
+	{
+		return horizontalWallJumpForce;
+	}
+	public void SetHorizontalWallJumpForce(float newWallJumpHorizontalForce)
+	{
+		horizontalWallJumpForce = newWallJumpHorizontalForce;
+	}
+	public void UpdateMoveSpeed()
+	{
+		moveSpeed = isWalking ? walkSpeed : runSpeed;
+	}
+
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MagicDotAbilities : PlayerAbilitiesBase
 {
-    protected override void MainAbility()
+    protected override void CastMainAbility()
     {
 
     }
 
-    protected override void SecondaryAbility()
+    protected override void CastSecondaryAbility()
     {
 
     }

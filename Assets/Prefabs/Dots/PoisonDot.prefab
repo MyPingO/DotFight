@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.b
-      value: 0.9098039
+      value: 0.32157263
       objectReference: {fileID: 0}
     - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.g
-      value: 0.43529412
+      value: 0.9098039
       objectReference: {fileID: 0}
     - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.r
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Name
-      value: LiquidDot
+      value: PoisonDot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74,14 +74,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -4233636441712120851}
+      addedObject: {fileID: -704791731027786119}
   m_SourcePrefab: {fileID: 100100000, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
 --- !u!1 &6288552228948413794 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
   m_PrefabInstance: {fileID: 3653754841621902526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-4233636441712120851
+--- !u!114 &-704791731027786119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,6 +90,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6288552228948413794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79837347d713de5419f7e313e1b70e51, type: 3}
+  m_Script: {fileID: 11500000, guid: 64e2d308f25fd0947bf056ee35aebd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainAbilityCooldown: 0
+  mainAbilityDuration: 0
+  currentMainAbilityCooldown: 0
+  secondaryAbilityCooldown: 0
+  secondaryAbilityDuration: 0
+  currentSecondaryAbilityCooldown: 0
+  onMainAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSecondaryAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
