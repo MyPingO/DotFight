@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicDotAbilities : PlayerAbilitiesBase
+public class QuickDotAbilities : PlayerAbilitiesBase
 {
     protected override void MainAbility()
     {
