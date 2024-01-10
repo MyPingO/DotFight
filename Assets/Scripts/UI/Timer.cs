@@ -42,7 +42,8 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isRunning && time < 0.0f)
+        if (!isRunning) return;
+        if (time < 0.0f)
         {
             eventManager.OnTimerStop.Invoke();
             return;
