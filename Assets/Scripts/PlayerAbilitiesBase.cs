@@ -40,5 +40,12 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 		}
 	}
 
+	protected virtual Vector2 GetMouseDirectionNormalized()
+	{
+		Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
+		return direction;
+		
+	}
 	
 }

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MagicDotAbilities : PlayerAbilitiesBase
@@ -16,7 +13,9 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 	
 	private void SpawnMagicBall() 
 	{
-		GameObject magicBallGO = Instantiate(MagicBallPrefab, transform.position, Quaternion.identity);
+		Vector2 spawnPosition = (Vector2) transform.position + GetMouseDirectionNormalized() * 1f;
+		
+		GameObject magicBallGO = Instantiate(MagicBallPrefab, spawnPosition, Quaternion.identity);
 		MagicBall magicBall = magicBallGO.GetComponent<MagicBall>();
 		magicBall.SetTarget(target);
 		magicBall.SetCaster(gameObject);
@@ -53,38 +52,58 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 	
 	private void SpawnBarrier() 
 	{
-		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		mousePosition.z = 0f; // Set z to 0 so that the barrier is on the same plane as the player
+		Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		GameObject magicBarrier = Instantiate(BarrierPrefab, mousePosition, Quaternion.identity);
+		
+		OrientMagicBarrier(magicBarrier, mousePosition);
+		SetFlatSideTag(magicBarrier, mousePosition);
+		
+		Destroy(magicBarrier, secondaryAbilityDuration);
+	}
+	
+	private void SetFlatSideTag(GameObject magicBarrier, Vector3 mousePosition)
+	{
+		GameObject flatSide = magicBarrier.transform.Find("FlatSide").gameObject;
+		
 		float mouseHorizontalDistanceFromPlayer = Mathf.Abs(mousePosition.x - transform.position.x);
 		
-		GameObject magicBarrier;
-		GameObject flatSide;
-		magicBarrier = Instantiate(BarrierPrefab, mousePosition, Quaternion.identity);
-		flatSide = magicBarrier.transform.Find("FlatSide").gameObject;
-
+		//Check if mouse click is close to under the player
+		if (mousePosition.y < transform.position.y && mouseHorizontalDistanceFromPlayer <= 3)
+		{
+			flatSide.tag = "Ground";
+		}
+		// Check if mouse click is close to above the player
+		else if (mousePosition.y > transform.position.y && mouseHorizontalDistanceFromPlayer <= 1.5f)
+		{
+			flatSide.tag = "Ground";
+		}
+		// If mouse click is to the sides of the player
+		else
+		{
+			flatSide.tag = "Wall";
+		}
+		
+	}
+	private void OrientMagicBarrier(GameObject magicBarrier, Vector3 mousePosition)
+	{
+		float mouseHorizontalDistanceFromPlayer = Mathf.Abs(mousePosition.x - transform.position.x);
 		
 		//Check if mouse click is close to under the player 
 		if (mousePosition.y < transform.position.y && mouseHorizontalDistanceFromPlayer <= 5)
 		{
 			magicBarrier.transform.eulerAngles = new Vector3(0, 0, 0);
-			flatSide.layer =  LayerMask.NameToLayer("Ground");
 		}
 		// Check if mouse click is close to above the player
 		else if (mousePosition.y > transform.position.y && mouseHorizontalDistanceFromPlayer <= 1.5f)
 		{
 			magicBarrier.transform.eulerAngles = new Vector3(0, 0, 180);
-			flatSide.layer =  LayerMask.NameToLayer("Ground");
 		}
 		// If mouse click is to the sides of the player
 		else
 		{
 			if (mousePosition.x > transform.position.x) magicBarrier.transform.eulerAngles = new Vector3(0, 0, 90);
 			else magicBarrier.transform.eulerAngles = new Vector3(0, 0, -90);
-			
-			flatSide.layer =  LayerMask.NameToLayer("Wall");
 		}
-		
-		Destroy(magicBarrier, secondaryAbilityDuration);
 	}
 
 	protected override void Update()

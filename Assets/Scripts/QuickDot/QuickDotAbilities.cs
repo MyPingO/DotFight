@@ -27,7 +27,6 @@ public class QuickDotAbilities : PlayerAbilitiesBase
 		
 		float defaultRunSpeed = playerMovement.GetRunSpeed();
 		float defaultWalkSpeed = playerMovement.GetWalkSpeed();
-		float defaultWallJumpForce = playerMovement.GetWallJumpForce();
 		float defaultHorizontalWallJumpForce = playerMovement.GetHorizontalWallJumpForce();
 		
 		playerMovement.SetRunSpeed(defaultRunSpeed * 2);
@@ -45,14 +44,9 @@ public class QuickDotAbilities : PlayerAbilitiesBase
 	
 	private void SpawnArrow() 
 	{
-		// rotate arrow to mouse position
-		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		mousePosition.z = 0;
-		
-		Vector3 direction = (mousePosition - transform.position).normalized;
+		Vector2 direction = GetMouseDirectionNormalized();
+		Vector2 spawnPosition = (Vector2) transform.position + direction * 1f;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
-		
-		Vector3 spawnPosition = transform.position + direction * 1f;
 		
 		Instantiate(ArrowPrefab, spawnPosition, rotation);
 	}
