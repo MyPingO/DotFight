@@ -89,3 +89,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77117538a75f4524799c516f9fa8ae4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainAbilityCooldown: 4
+  mainAbilityDuration: 2
+  currentMainAbilityCooldown: 0
+  secondaryAbilityCooldown: 15
+  secondaryAbilityDuration: 3
+  currentSecondaryAbilityCooldown: 0
+  onMainAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSecondaryAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  MagicBallPrefab: {fileID: 1811021797978453638, guid: df9357db3b2181d459eeb8f381c21d69, type: 3}
+  BarrierPrefab: {fileID: 1309765175945892258, guid: 60123e20234a69e4481b161c64805b5a, type: 3}
+  target: {fileID: 0}
