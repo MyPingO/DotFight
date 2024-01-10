@@ -4,14 +4,14 @@ using UnityEngine.Events;
 
 public abstract class PlayerAbilitiesBase : MonoBehaviour
 {
-	[SerializeField] protected float MainAbilityCooldown { get; set; }
-	[SerializeField] protected float MainAbilityDuration { get; set; }
+	[SerializeField] protected float mainAbilityCooldown;
+	[SerializeField] protected float mainAbilityDuration;
 	[SerializeField] protected float currentMainAbilityCooldown;
-	[SerializeField] protected float SecondaryAbilityCooldown { get; set; }
-	[SerializeField] protected float SecondaryAbilityDuration { get; set; }
+	[SerializeField] protected float secondaryAbilityCooldown;
+	[SerializeField] protected float secondaryAbilityDuration;
 	[SerializeField] protected float currentSecondaryAbilityCooldown;
-	[TextArea (3, 10)] [SerializeField] protected float mainAbilityDescription;
-	[TextArea (3, 10)] [SerializeField] protected float secondaryAbilityDescription;
+	[TextArea (3, 10)] protected float mainAbilityDescription;
+	[TextArea (3, 10)] protected float secondaryAbilityDescription;
 	public UnityEvent onMainAbilityCast;
 	public UnityEvent onSecondaryAbilityCast;
 	protected abstract void CastMainAbility();
@@ -31,13 +31,13 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && currentMainAbilityCooldown <= 0)
 		{
 			CastMainAbility();
-			currentMainAbilityCooldown = MainAbilityCooldown;
+			currentMainAbilityCooldown = mainAbilityCooldown;
 		}
 
 		if (Input.GetMouseButtonDown(1) && currentSecondaryAbilityCooldown <= 0)
 		{
 			CastSecondaryAbility();
-			currentSecondaryAbilityCooldown = SecondaryAbilityCooldown;
+			currentSecondaryAbilityCooldown = secondaryAbilityCooldown;
 		}
 	}
 
@@ -49,4 +49,42 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 		
 	}
 	
+	public float GetMainAbilityCooldown()
+	{
+		return mainAbilityCooldown;
+	}
+	public void SetMainAbilityCooldown(float cooldown)
+	{
+		mainAbilityCooldown = cooldown;
+	}
+	
+	public float GetMainAbilityDuration()
+	{
+		return mainAbilityDuration;
+	}
+	
+	public void SetMainAbilityDuration(float duration)
+	{
+		mainAbilityDuration = duration;
+	}
+	
+	public float GetSecondaryAbilityCooldown()
+	{
+		return secondaryAbilityCooldown;
+	}
+	
+	public void SetSecondaryAbilityCooldown(float cooldown)
+	{
+		secondaryAbilityCooldown = cooldown;
+	}
+	
+	public float GetSecondaryAbilityDuration()
+	{
+		return secondaryAbilityDuration;
+	}
+	
+	public void SetSecondaryAbilityDuration(float duration)
+	{
+		secondaryAbilityDuration = duration;
+	}
 }
