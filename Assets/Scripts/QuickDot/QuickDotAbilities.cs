@@ -47,9 +47,13 @@ public class QuickDotAbilities : PlayerAbilitiesBase
 	{
 		// rotate arrow to mouse position
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Vector3 direction = mousePosition - transform.position;
+		mousePosition.z = 0;
+		
+		Vector3 direction = (mousePosition - transform.position).normalized;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 		
-		Instantiate(ArrowPrefab, transform.position, rotation);
+		Vector3 spawnPosition = transform.position + direction * 1f;
+		
+		Instantiate(ArrowPrefab, spawnPosition, rotation);
 	}
 }
