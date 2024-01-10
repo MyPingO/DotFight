@@ -1,16 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class PlayerAbilitiesBase : MonoBehaviour
 {
-	[SerializeField] protected float mainAbilityCooldown;
-	[SerializeField] protected float mainAbilityDuration;
+	[SerializeField] protected float MainAbilityCooldown { get; set; }
+	[SerializeField] protected float MainAbilityDuration { get; set; }
 	[SerializeField] protected float currentMainAbilityCooldown;
-	[SerializeField] protected float secondaryAbilityCooldown;
-	[SerializeField] protected float secondaryAbilityDuration;
+	[SerializeField] protected float SecondaryAbilityCooldown { get; set; }
+	[SerializeField] protected float SecondaryAbilityDuration { get; set; }
 	[SerializeField] protected float currentSecondaryAbilityCooldown;
-	[TextArea (3, 10)] protected float mainAbilityDescription;
-	[TextArea (3, 10)] protected float secondaryAbilityDescription;
+	[TextArea (3, 10)] [SerializeField] protected float mainAbilityDescription;
+	[TextArea (3, 10)] [SerializeField] protected float secondaryAbilityDescription;
 	public UnityEvent onMainAbilityCast;
 	public UnityEvent onSecondaryAbilityCast;
 	protected abstract void CastMainAbility();
@@ -30,13 +31,13 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && currentMainAbilityCooldown <= 0)
 		{
 			CastMainAbility();
-			currentMainAbilityCooldown = mainAbilityCooldown;
+			currentMainAbilityCooldown = MainAbilityCooldown;
 		}
 
 		if (Input.GetMouseButtonDown(1) && currentSecondaryAbilityCooldown <= 0)
 		{
 			CastSecondaryAbility();
-			currentSecondaryAbilityCooldown = secondaryAbilityCooldown;
+			currentSecondaryAbilityCooldown = SecondaryAbilityCooldown;
 		}
 	}
 
