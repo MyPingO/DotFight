@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Name
-      value: PyreDot
+      value: FireDot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -89,3 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f67646fb0208374bbc26c41499bdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainAbilityCooldown: 0
+  mainAbilityDuration: 0
+  currentMainAbilityCooldown: 0
+  secondaryAbilityCooldown: 0
+  secondaryAbilityDuration: 0
+  currentSecondaryAbilityCooldown: 0
+  onMainAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSecondaryAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []

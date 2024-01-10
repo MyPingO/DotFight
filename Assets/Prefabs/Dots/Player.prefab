@@ -164,16 +164,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  runSpeed: 5
+  walkSpeed: 2.5
   jumpForce: 10
   wallJumpForce: 8
-  wallJumpHorizontalForce: 6
+  horizontalWallJumpForce: 5
   inertia: 0.9
   jumpRequested: 0
   movementDisabled: 0
   airControlSmoothing: 15
   moveX: 0
+  isWalking: 0
   isJumping: 0
   isWallJumping: 0
+  isGrounded: 0
+  canAirJump: 1
   rigidBody: {fileID: 0}
   playerCollider: {fileID: 0}
   groundLayer:
@@ -194,6 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3653753f274f63047b70ff9e61f5aca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeInPoison: 0
+  timeUntilPoisonFatal: 1.5
 --- !u!1001 &5305183636847781468
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,9 +13,7 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 	
 	private void SpawnMagicBall() 
 	{
-		Vector2 spawnPosition = (Vector2) transform.position + GetMouseDirectionNormalized() * 1f;
-		
-		GameObject magicBallGO = Instantiate(MagicBallPrefab, spawnPosition, Quaternion.identity);
+		GameObject magicBallGO = Instantiate(MagicBallPrefab, transform.position, Quaternion.identity);
 		MagicBall magicBall = magicBallGO.GetComponent<MagicBall>();
 		magicBall.SetTarget(target);
 		magicBall.SetCaster(gameObject);
@@ -61,7 +59,7 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 		Destroy(magicBarrier, secondaryAbilityDuration);
 	}
 	
-	private void SetFlatSideTag(GameObject magicBarrier, Vector3 mousePosition)
+	private void SetFlatSideTag(GameObject magicBarrier, Vector2 mousePosition)
 	{
 		GameObject flatSide = magicBarrier.transform.Find("FlatSide").gameObject;
 		
@@ -84,7 +82,7 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 		}
 		
 	}
-	private void OrientMagicBarrier(GameObject magicBarrier, Vector3 mousePosition)
+	private void OrientMagicBarrier(GameObject magicBarrier, Vector2 mousePosition)
 	{
 		float mouseHorizontalDistanceFromPlayer = Mathf.Abs(mousePosition.x - transform.position.x);
 		
