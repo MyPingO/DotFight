@@ -18,10 +18,7 @@ public class EventManager : MonoBehaviour
 
     // Events to keep track of the score
     [NonSerialized]
-    public UnityEvent<int> OnScoreUpdate = new UnityEvent<int>();
+    public UnityEvent OnPlayerScore = new UnityEvent();
     [NonSerialized]
-    public UnityEvent<int> OnScoreSet = new UnityEvent<int>();
-    [NonSerialized]
-    public UnityEvent<int> OnScoreReset = new UnityEvent<int>();
-
+    public UnityEvent OnAiScore = new UnityEvent();
 }
