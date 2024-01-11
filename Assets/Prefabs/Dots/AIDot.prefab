@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5471025335768501229
+--- !u!1001 &6570137256054976939
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,26 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-      propertyPath: m_Color.b
-      value: 0.95056605
-      objectReference: {fileID: 0}
-    - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-      propertyPath: m_Color.g
-      value: 0.2584905
-      objectReference: {fileID: 0}
-    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-      propertyPath: m_Color.b
-      value: 0.92100555
-      objectReference: {fileID: 0}
-    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-      propertyPath: m_Color.g
-      value: 0.44716978
-      objectReference: {fileID: 0}
-    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6138117995851209249, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -74,45 +54,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Name
-      value: MagicDot
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -6693747504952037449}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
---- !u!1 &3322863548499915313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
-  m_PrefabInstance: {fileID: 5471025335768501229}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-6693747504952037449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3322863548499915313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77117538a75f4524799c516f9fa8ae4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainAbilityCooldown: 4
-  mainAbilityDuration: 2
-  currentMainAbilityCooldown: 0
-  secondaryAbilityCooldown: 10
-  secondaryAbilityDuration: 2
-  currentSecondaryAbilityCooldown: 0
-  onMainAbilityCast:
-    m_PersistentCalls:
-      m_Calls: []
-  onSecondaryAbilityCast:
-    m_PersistentCalls:
-      m_Calls: []
-  MagicBallPrefab: {fileID: 1811021797978453638, guid: df9357db3b2181d459eeb8f381c21d69, type: 3}
-  BarrierPrefab: {fileID: 1309765175945892258, guid: 60123e20234a69e4481b161c64805b5a, type: 3}
-  target: {fileID: 0}
