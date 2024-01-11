@@ -23,12 +23,12 @@ public class PoisonDart : MonoBehaviour
 		
 	}
 	
-	private void OnCollisionEnter2D(Collision2D other)
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Player"))
+		if (other.CompareTag("Player"))
 		{
-			other.gameObject.GetComponent<PlayerBehaviour>().BecomePoisoned(poisonDuration);
+			other.GetComponent<PlayerBehaviour>().Die();
 		}
-		Destroy(gameObject);	
+		Destroy(gameObject);
 	}
 }

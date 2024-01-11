@@ -9,13 +9,13 @@ public class PoisonCloud : MonoBehaviour
 	[SerializeField] private float duration;
 	public bool isPoisonous;
 	
-	void Awake()
+	private void Awake()
 	{
 		isPoisonous = false;
 		// disable the collider until the cloud is ready to spread
 		GetComponent<Collider2D>().enabled = false;
 	}
-	void Start()
+	private void Start()
 	{
 		StartCoroutine(Activate());
 	}
