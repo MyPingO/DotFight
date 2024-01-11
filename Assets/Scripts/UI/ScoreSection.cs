@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 
-public class Score : MonoBehaviour
+public class ScoreSection : MonoBehaviour
 {
     // Start is called before the first frame update
     public TMP_Text playerName;
@@ -16,8 +13,7 @@ public class Score : MonoBehaviour
     public TMP_Text aiScore;
     public Image aiIcon;
 
-    public GameObject gameManager;
-
+    private GameObject gameManager;
     private EventManager eventManager;
     private GameObject player;
     private GameObject ai;
@@ -27,14 +23,14 @@ public class Score : MonoBehaviour
 
     void Awake()
     {
-
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
         eventManager = gameManager.GetComponent<EventManager>();
         //TODO: get also AI when it is implemented
         player = GameObject.FindGameObjectWithTag("Player");
-        (string pName, string pColor) = getDotIstanceProperties(player);
-        playerName.text = "Player "+ pName;
-        playerIcon.color = ColorUtility.TryParseHtmlString(pColor, out Color color) ? color : Color.white;
-        
+        DotAttributes playerAttributes = gameManager.GetComponent<GameManager>().GetDotAttributes(player);
+        playerName.text = "Player " + playerAttributes.name;
+        playerIcon.color = ColorUtility.TryParseHtmlString(playerAttributes.color, out Color color) ? color : Color.white;
+
     }
 
     private void OnEnable()
@@ -47,27 +43,6 @@ public class Score : MonoBehaviour
     {
         eventManager.OnPlayerScore.RemoveListener(UpdatePlayerScore);
         eventManager.OnAiScore.RemoveListener(UpdateAiScore);
-    }
-
-    private (string name, string color) getDotIstanceProperties(GameObject dot)
-    {
-        if (player.GetComponent<PlayerAbilitiesBase>() is QuickDotAbilities quickDot)
-        {
-            return (name: "QuickDot", color: "#FFFFFF");
-        }
-        else if (player.GetComponent<PlayerAbilitiesBase>() is FireDotAbilities fireDot)
-        {
-            return (name: "FireDot", color: "#FF2C00");
-        }
-        else if (player.GetComponent<PlayerAbilitiesBase>() is MagicDotAbilities magicDot)
-        {
-            return (name: "MagicDot", color: "#FFA7F9");
-        }
-        else if (player.GetComponent<PlayerAbilitiesBase>() is PoisonDotAbilities poisonDot)
-        {
-            return (name: "PoisonDot", color: "#00E852");
-        }
-        else return (name: "Dot", color: "#CCCCCC");
     }
 
     private void UpdatePlayerScore()
