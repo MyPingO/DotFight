@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,12 +30,14 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && currentMainAbilityCooldown <= 0)
 		{
 			CastMainAbility();
+			onMainAbilityCast.Invoke();
 			currentMainAbilityCooldown = mainAbilityCooldown;
 		}
 
 		if (Input.GetMouseButtonDown(1) && currentSecondaryAbilityCooldown <= 0)
 		{
 			CastSecondaryAbility();
+			onSecondaryAbilityCast.Invoke();
 			currentSecondaryAbilityCooldown = secondaryAbilityCooldown;
 		}
 	}

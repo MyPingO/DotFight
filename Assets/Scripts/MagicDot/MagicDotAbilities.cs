@@ -116,6 +116,7 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 			if (target != null)
 			{
 				CastMainAbility();
+				base.onMainAbilityCast.Invoke();
 				currentMainAbilityCooldown = mainAbilityCooldown;
 			}
 		}
@@ -123,6 +124,7 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 		if (Input.GetMouseButtonDown(1) && currentSecondaryAbilityCooldown <= 0)
 		{
 			CastSecondaryAbility();
+			base.onSecondaryAbilityCast.Invoke();
 			currentSecondaryAbilityCooldown = secondaryAbilityCooldown;
 		}
 	}
