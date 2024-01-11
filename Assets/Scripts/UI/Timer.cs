@@ -1,14 +1,10 @@
-using JetBrains.Annotations;
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject gameManager;
-
+    private GameObject gameManager;
     private EventManager eventManager;
     private TMP_Text timerText;
     private float time = 30f;
@@ -17,7 +13,8 @@ public class Timer : MonoBehaviour
     private bool showMilliSeconds = true;
 
     void Awake()
-    {
+    {   
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
         timerText = GetComponent<TMP_Text>();
         eventManager = gameManager.GetComponent<EventManager>();
     }
