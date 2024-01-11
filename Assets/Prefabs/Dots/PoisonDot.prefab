@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.55604064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: m_Color.r
+      value: 0.53207546
+      objectReference: {fileID: 0}
     - target: {fileID: 6138117995851209249, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -93,11 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e2d308f25fd0947bf056ee35aebd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainAbilityCooldown: 0
-  mainAbilityDuration: 0
+  mainAbilityCooldown: 3
+  mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
-  secondaryAbilityCooldown: 0
-  secondaryAbilityDuration: 0
+  secondaryAbilityCooldown: 8
+  secondaryAbilityDuration: 5
   currentSecondaryAbilityCooldown: 0
   onMainAbilityCast:
     m_PersistentCalls:
@@ -105,3 +117,5 @@ MonoBehaviour:
   onSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  poisonDartPrefab: {fileID: 0}
+  poisonCloudPrefab: {fileID: 0}

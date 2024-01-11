@@ -7,7 +7,7 @@ public class Arrow : MonoBehaviour
 	[SerializeField] private float speed;
 	[SerializeField] private float windupTimer;
 
-	void Update()
+	private void Update()
 	{
 		if (windupTimer <= 0) 
 		{

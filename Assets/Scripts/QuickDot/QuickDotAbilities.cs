@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class QuickDotAbilities : PlayerAbilitiesBase
 {
 	private PlayerMovement playerMovement;
 	[SerializeField] private GameObject ArrowPrefab;
-	void Awake() 
+	private void Awake() 
 	{
 		playerMovement = GetComponent<PlayerMovement>();
 	}

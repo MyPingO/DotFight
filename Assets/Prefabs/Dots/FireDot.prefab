@@ -14,7 +14,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.g
-      value: 0.17254902
+      value: 0.29037073
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20861846
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: m_Intensity
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 6138117995851209249, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_RootOrder
@@ -62,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7345883659314575836, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Name
-      value: PyreDot
+      value: FireDot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -89,3 +101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f67646fb0208374bbc26c41499bdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainAbilityCooldown: 3
+  mainAbilityDuration: 2
+  currentMainAbilityCooldown: 0
+  secondaryAbilityCooldown: 12
+  secondaryAbilityDuration: 5
+  currentSecondaryAbilityCooldown: 0
+  onMainAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  onSecondaryAbilityCast:
+    m_PersistentCalls:
+      m_Calls: []
+  fireBallPrefab: {fileID: 1309765175945892258, guid: ed875aedfb527544fa1254aacbdf8430, type: 3}
+  fireTrailPrefab: {fileID: 1296658312277151617, guid: d160257c3c0fe474d85ed93ab9ed3e0a, type: 3}
+  playerMovement: {fileID: 0}
+  isTouchingFireTrail: 0
