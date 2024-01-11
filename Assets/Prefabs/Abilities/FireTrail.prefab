@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3940654342789199857}
   - component: {fileID: 165393241730527499}
   - component: {fileID: -5299148797746996562}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireTrail
   m_TagString: FireTrail
   m_Icon: {fileID: 0}

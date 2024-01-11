@@ -27,7 +27,7 @@ public class PoisonDart : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<PlayerBehaviour>().Die();
+			other.GetComponent<PlayerBehaviour>().BecomePoisoned(poisonDuration);
 		}
 		Destroy(gameObject);
 	}

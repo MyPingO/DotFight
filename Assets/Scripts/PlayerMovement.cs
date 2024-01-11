@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
 		// If the player is not moving horizontally, slow down the player gradually to a stop
 		else
 			rigidBody.velocity = new Vector2(rigidBody.velocity.x * inertia, rigidBody.velocity.y);
-
+		
 		// Jumping
 		if (jumpRequested)
 		{
