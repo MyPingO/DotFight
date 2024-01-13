@@ -117,5 +117,5 @@ MonoBehaviour:
   onSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
-  poisonDartPrefab: {fileID: 0}
-  poisonCloudPrefab: {fileID: 0}
+  poisonDartPrefab: {fileID: 1309765175945892258, guid: 817d717337950f349ad4632c44cd0895, type: 3}
+  poisonCloudPrefab: {fileID: 4446262920537328644, guid: a7c165c90075088428a1b36a0b79a6df, type: 3}
