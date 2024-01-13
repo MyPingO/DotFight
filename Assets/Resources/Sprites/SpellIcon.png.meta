@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e15918cfeda49a34e9df892603da3a71
+guid: 839f679a7cd07ac458f957b5a9b8f552
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpeedIcon_0
+      name: SpellIcon_0
       rect:
         serializedVersion: 2
-        x: 171
-        y: 171
-        width: 461
-        height: 461
+        x: 856
+        y: 856
+        width: 768
+        height: 768
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ee2f663350688d4ba43f115706b63ac
-      internalID: -474145234
+      spriteID: bb8b99a0648c0454d9a371f86d651076
+      internalID: -731762226
       vertices: []
       indices: 
       edges: []
@@ -134,14 +134,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SpeedIcon_0: -474145234
+      SpellIcon_0: -731762226
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
