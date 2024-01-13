@@ -8,8 +8,7 @@ TagManager:
   - Wall
   - Poison
   - FireTrail
-  - JumpPoint
-  - SwitchPoint
+  - RadioButton
   layers:
   - Default
   - TransparentFX
