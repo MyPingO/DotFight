@@ -41,14 +41,14 @@ public class AbilitiesSection : MonoBehaviour
 
     private void OnEnable()
     {
-        player.GetComponent<PlayerAbilitiesBase>().onMainAbilityCast.AddListener(HandleCastPrimaryAbility);
-        player.GetComponent<PlayerAbilitiesBase>().onSecondaryAbilityCast.AddListener(HandleCastSecondaryAbility);
+        player.GetComponent<PlayerAbilitiesBase>().OnMainAbilityCast.AddListener(HandleCastPrimaryAbility);
+        player.GetComponent<PlayerAbilitiesBase>().OnSecondaryAbilityCast.AddListener(HandleCastSecondaryAbility);
     }
 
     private void OnDisable()
     {
-        player.GetComponent<PlayerAbilitiesBase>().onMainAbilityCast.RemoveListener(HandleCastPrimaryAbility);
-        player.GetComponent<PlayerAbilitiesBase>().onSecondaryAbilityCast.RemoveListener(HandleCastSecondaryAbility);
+        player.GetComponent<PlayerAbilitiesBase>().OnMainAbilityCast.RemoveListener(HandleCastPrimaryAbility);
+        player.GetComponent<PlayerAbilitiesBase>().OnSecondaryAbilityCast.RemoveListener(HandleCastSecondaryAbility);
     }
 
     // Update is called once per frame

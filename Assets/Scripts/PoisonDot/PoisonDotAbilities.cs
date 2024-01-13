@@ -20,10 +20,11 @@ public class PoisonDotAbilities : PlayerAbilitiesBase
 	private void SpawnPoisonDart()
 	{
 		Vector2 direction = GetMouseDirectionNormalized();
-		Vector2 spawnPosition = (Vector2) transform.position + direction * 1f;
+		Vector2 spawnPosition = (Vector2) transform.position + direction * .5f;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-		Instantiate(poisonDartPrefab, spawnPosition, rotation);
+		GameObject poisonDart = Instantiate(poisonDartPrefab, spawnPosition, rotation);
+		poisonDart.GetComponent<PoisonDart>().SetCaster(gameObject);
 	}
 
 	private void SpawnPoisonCloud()
@@ -32,5 +33,6 @@ public class PoisonDotAbilities : PlayerAbilitiesBase
 		Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		GameObject poisonCloud = Instantiate(poisonCloudPrefab, mousePosition, Quaternion.identity);
 		poisonCloud.GetComponent<PoisonCloud>().SetDuration(secondaryAbilityDuration);
+		poisonCloud.GetComponent<PoisonCloud>().SetCaster(gameObject);
 	}
 }

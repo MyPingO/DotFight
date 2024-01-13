@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 324071364825397321}
   - component: {fileID: 4046146806188354528}
   - component: {fileID: 4197269417284567541}
-  m_Layer: 0
-  m_Name: Player
+  m_Layer: 8
+  m_Name: Dot
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInPoison: 0
   timeUntilPoisonFatal: 1.5
+  isPoisoned: 0
 --- !u!1001 &5305183636847781468
 PrefabInstance:
   m_ObjectHideFlags: 0

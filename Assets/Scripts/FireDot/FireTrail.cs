@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireTrail : MonoBehaviour
+public class FireTrail : Danger
 {
 	[SerializeField] private float duration;
-	[SerializeField] private GameObject caster;
 	private void Start()
 	{
-		Destroy(gameObject, duration);
+		DestroyDanger(duration);
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	private void OnTriggerEnter2D(Collider2D other)
 	{
+		base.OnTriggerEnter2D(other);
 		if (other.gameObject.CompareTag("Player") && other.gameObject != caster)
 		{
-			other.gameObject.GetComponent<PlayerBehaviour>().Die();
+			if (other.gameObject.TryGetComponent(out AIDot aiDot))
+			{
+				aiDot.Die();
+			}
+			else other.gameObject.GetComponent<PlayerBehaviour>().Die();
 		}
-	}
-	
-	public void SetCaster(GameObject caster)
-	{
-		this.caster = caster;
 	}
 	
 }

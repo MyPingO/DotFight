@@ -93,16 +93,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79837347d713de5419f7e313e1b70e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainAbilityCooldown: 4
-  mainAbilityDuration: 3
+  mainAbilityCooldown: 2
+  mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
   secondaryAbilityCooldown: 10
   secondaryAbilityDuration: 5
   currentSecondaryAbilityCooldown: 0
-  onMainAbilityCast:
+  OnMainAbilityCast:
     m_PersistentCalls:
       m_Calls: []
-  onSecondaryAbilityCast:
+  OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
   ArrowPrefab: {fileID: 1309765175945892258, guid: 93947e680feb8d74eb9b294f13a0c7b1, type: 3}

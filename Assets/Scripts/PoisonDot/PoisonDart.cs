@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PoisonDart : MonoBehaviour
+public class PoisonDart : Danger
 {
 	[SerializeField] private float force = 10f;
 	[SerializeField] private float poisonDuration = 5f;
@@ -25,10 +25,17 @@ public class PoisonDart : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		base.OnTriggerEnter2D(other);
+		if (other.gameObject == caster) return;
+		
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<PlayerBehaviour>().BecomePoisoned(poisonDuration);
+			if (other.TryGetComponent(out AIDot aiDot))
+			{
+				aiDot.BecomePoisoned(poisonDuration);
+			}
+			else other.GetComponent<PlayerBehaviour>().BecomePoisoned(poisonDuration);
 		}
-		Destroy(gameObject);
+		DestroyDanger();
 	}
 }

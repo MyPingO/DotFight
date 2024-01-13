@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6214241090740561114}
   - component: {fileID: -3911338427736386887}
   - component: {fileID: 7956551799082941270}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58865062236f1648ae3a47c036e72a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDangerDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  caster: {fileID: 0}
   speed: 50
   windupTimer: 1
 --- !u!1 &8951668906806114219

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : MonoBehaviour
+public class FireBall : Danger
 {
 	[SerializeField] private float speed;
 
@@ -13,10 +13,17 @@ public class FireBall : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		base.OnTriggerEnter2D(other);
+		if (other.gameObject == caster) return;
+		
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<PlayerBehaviour>().Die();
+			if (other.TryGetComponent(out AIDot aiDot))
+			{
+				aiDot.Die();
+			}
+			else other.GetComponent<PlayerBehaviour>().Die();
 		}
-		Destroy(gameObject);
+		DestroyDanger();
 	}
 }

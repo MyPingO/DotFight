@@ -92,10 +92,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8454019546428571338}
   - component: {fileID: 340632072486357950}
-  - component: {fileID: 8300837170761452906}
   - component: {fileID: 178843757788889873}
+  - component: {fileID: 8300837170761452906}
   - component: {fileID: 989849904999329757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MagicBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,22 +170,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8300837170761452906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1811021797978453638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e94dd01fb0add4fa63614d3828640a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 10
-  lifeTime: 0
-  caster: {fileID: 0}
 --- !u!58 &178843757788889873
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -201,7 +185,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -221,6 +205,25 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &8300837170761452906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811021797978453638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e94dd01fb0add4fa63614d3828640a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDangerDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  caster: {fileID: 0}
+  target: {fileID: 0}
+  speed: 10
+  lifeTime: 0
 --- !u!50 &989849904999329757
 Rigidbody2D:
   serializedVersion: 4

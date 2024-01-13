@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3940654342789199857}
   - component: {fileID: 165393241730527499}
   - component: {fileID: -5299148797746996562}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: FireTrail
   m_TagString: FireTrail
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -66,7 +66,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.24977289}
+  m_Offset: {x: 0, y: 0.24881315}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -77,7 +77,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9939079}
+  m_Size: {x: 1, y: 0.9996667}
   m_EdgeRadius: 0
 --- !u!114 &-5299148797746996562
 MonoBehaviour:
@@ -91,8 +91,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0b231e3f545e243a21b2e8a187ea2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  OnDangerDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
   caster: {fileID: 0}
+  duration: 2
 --- !u!1 &5785236628821673703
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +106,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9167072721315208014}
   - component: {fileID: 4345577464920299498}
-  m_Layer: 0
+  - component: {fileID: 8766588445066213014}
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,3 +181,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8766588445066213014
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785236628821673703}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0014074743}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0006061}
+  m_EdgeRadius: 0

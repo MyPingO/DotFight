@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5281212832858171039}
   - component: {fileID: -3911338427736386887}
   - component: {fileID: -8606958051192609406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -109,6 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e15f1f58c199545a9dc55ee68c1cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDangerDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  caster: {fileID: 0}
   speed: 25
 --- !u!1 &8951668906806114219
 GameObject:

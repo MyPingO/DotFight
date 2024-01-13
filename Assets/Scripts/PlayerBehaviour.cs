@@ -1,24 +1,50 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-	[SerializeField] private float timeInPoison;
-	[SerializeField] private float timeUntilPoisonFatal;
+	[SerializeField]
+	private float timeInPoison;
+
+	[SerializeField]
+	private float timeUntilPoisonFatal;
+
+	[SerializeField]
+	private bool isPoisoned;
+
+	[SerializeField]
+	private Transform spawnPoint;
+	
+	private void Start()
+	{
+		transform.localPosition = spawnPoint.localPosition;
+	}
+
 	public void BecomePoisoned(float poisonTime)
 	{
+		isPoisoned = true;
+		PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+		playerMovement.SetRunSpeed(playerMovement.GetRunSpeed() / 1.5f);
+		playerMovement.SetWalkSpeed(playerMovement.GetWalkSpeed() / 1.5f);
 		Die(poisonTime);
 	}
+
 	public void Die(float timeDelay = 0f)
 	{
-		Destroy(gameObject, timeDelay);
+		StartCoroutine(DieCoroutine(timeDelay));
+	}
+
+	private IEnumerator DieCoroutine(float timeDelay)
+	{
+		yield return new WaitForSeconds(timeDelay);
+		transform.localPosition = new Vector2(Random.Range(-10f, 10f), Random.Range(-5f, 5f));
 	}
 
 	private void Respawn(GameObject[] SpawnPoints)
 	{
 		// TODO: Implement respawn logic
-		
 	}
+
 	private void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("Poison"))
@@ -30,12 +56,17 @@ public class PlayerBehaviour : MonoBehaviour
 			}
 		}
 	}
-	
+
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Poison"))
+		if (other.gameObject.GetComponent<PoisonCloud>())
 		{
 			timeInPoison = 0f;
 		}
+	}
+
+	public bool IsPoisoned()
+	{
+		return isPoisoned;
 	}
 }

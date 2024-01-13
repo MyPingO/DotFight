@@ -109,23 +109,19 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 		currentMainAbilityCooldown = Mathf.Max(0, currentMainAbilityCooldown - Time.deltaTime);
 		currentSecondaryAbilityCooldown = Mathf.Max(0, currentSecondaryAbilityCooldown - Time.deltaTime);
 		
-		if (Input.GetMouseButtonDown(0) && currentMainAbilityCooldown <= 0)
+		if (Input.GetMouseButtonDown(0))
 		{
 			// Only cast main ability if there is a target
 			GetClosestTarget(out target);
 			if (target != null)
 			{
-				CastMainAbility();
-				base.onMainAbilityCast.Invoke();
-				currentMainAbilityCooldown = mainAbilityCooldown;
+				TriggerMainAbility();
 			}
 		}
 
-		if (Input.GetMouseButtonDown(1) && currentSecondaryAbilityCooldown <= 0)
+		if (Input.GetMouseButtonDown(1))
 		{
-			CastSecondaryAbility();
-			base.onSecondaryAbilityCast.Invoke();
-			currentSecondaryAbilityCooldown = secondaryAbilityCooldown;
+			TriggerSecondaryAbility();
 		}
 	}
 }

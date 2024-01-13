@@ -47,6 +47,7 @@ public class QuickDotAbilities : PlayerAbilitiesBase
 		Vector2 spawnPosition = (Vector2) transform.position + direction * 1f;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 		
-		Instantiate(ArrowPrefab, spawnPosition, rotation);
+		GameObject arrow = Instantiate(ArrowPrefab, spawnPosition, rotation);
+		arrow.GetComponent<Arrow>().SetCaster(gameObject);
 	}
 }

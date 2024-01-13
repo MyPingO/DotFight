@@ -21,12 +21,12 @@ public class FireDotAbilities : PlayerAbilitiesBase
 	private void SpawnFireBall()
 	{
 		Vector2 direction = GetMouseDirectionNormalized();
-		Vector2 spawnPosition = (Vector2) transform.position + direction * 1f;
+		Vector2 spawnPosition = (Vector2) transform.position;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
-		Instantiate(fireBallPrefab, spawnPosition, rotation);
+		GameObject fireball = Instantiate(fireBallPrefab, spawnPosition, rotation);
+		fireball.GetComponent<FireBall>().SetCaster(gameObject);
 	}
-
 	protected override void CastSecondaryAbility()
 	{
 		StartCoroutine(LeaveFireTrail());

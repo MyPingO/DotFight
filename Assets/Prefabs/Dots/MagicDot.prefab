@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.b
-      value: 0.92100555
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.g
-      value: 0.44716978
+      value: 0.44705883
       objectReference: {fileID: 0}
     - target: {fileID: 3101841182481721193, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.r
@@ -104,13 +104,13 @@ MonoBehaviour:
   mainAbilityCooldown: 4
   mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
-  secondaryAbilityCooldown: 10
+  secondaryAbilityCooldown: 6
   secondaryAbilityDuration: 2
   currentSecondaryAbilityCooldown: 0
-  onMainAbilityCast:
+  OnMainAbilityCast:
     m_PersistentCalls:
       m_Calls: []
-  onSecondaryAbilityCast:
+  OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
   MagicBallPrefab: {fileID: 1811021797978453638, guid: df9357db3b2181d459eeb8f381c21d69, type: 3}

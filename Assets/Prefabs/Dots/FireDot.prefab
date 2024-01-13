@@ -104,13 +104,13 @@ MonoBehaviour:
   mainAbilityCooldown: 3
   mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
-  secondaryAbilityCooldown: 12
+  secondaryAbilityCooldown: 10
   secondaryAbilityDuration: 5
   currentSecondaryAbilityCooldown: 0
-  onMainAbilityCast:
+  OnMainAbilityCast:
     m_PersistentCalls:
       m_Calls: []
-  onSecondaryAbilityCast:
+  OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
   fireBallPrefab: {fileID: 1309765175945892258, guid: ed875aedfb527544fa1254aacbdf8430, type: 3}

@@ -1,16 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MagicBall : MonoBehaviour
+public class MagicBall : Danger
 {
 	[SerializeField] private Transform target;
 	[SerializeField] private float speed;
 	[SerializeField] private float lifeTime;
-	[SerializeField] private GameObject caster;
 	
 	private void Start()
 	{
-		Destroy(gameObject, lifeTime);
+		DestroyDanger(lifeTime);
 	}
 
 	private void Update()
@@ -29,10 +28,6 @@ public class MagicBall : MonoBehaviour
 		this.target = target;
 	}
 	
-	public void SetCaster(GameObject caster)
-	{
-		this.caster = caster;
-	}
 	
 	public void LifeTime(float time)
 	{
@@ -41,11 +36,16 @@ public class MagicBall : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
+		base.OnTriggerEnter2D(other);
 		if (other.gameObject == caster) return;
 		
 		if (other.CompareTag("Player"))
 		{
-			other.GetComponent<PlayerBehaviour>().Die();
+			if (other.TryGetComponent(out AIDot aiDot))
+			{
+				aiDot.Die();
+			}
+			else other.GetComponent<PlayerBehaviour>().Die();
 		}
 		Destroy(gameObject);
 	}

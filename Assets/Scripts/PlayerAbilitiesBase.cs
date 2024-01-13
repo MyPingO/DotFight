@@ -11,8 +11,8 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 	[SerializeField] protected float currentSecondaryAbilityCooldown;
 	[TextArea (3, 10)] protected float mainAbilityDescription;
 	[TextArea (3, 10)] protected float secondaryAbilityDescription;
-	public UnityEvent onMainAbilityCast;
-	public UnityEvent onSecondaryAbilityCast;
+	public UnityEvent OnMainAbilityCast;
+	public UnityEvent OnSecondaryAbilityCast;
 	protected abstract void CastMainAbility();
 	protected abstract void CastSecondaryAbility();
 	
@@ -27,17 +27,33 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 		currentMainAbilityCooldown = Mathf.Max(0, currentMainAbilityCooldown - Time.deltaTime);
 		currentSecondaryAbilityCooldown = Mathf.Max(0, currentSecondaryAbilityCooldown - Time.deltaTime);
 		
-		if (Input.GetMouseButtonDown(0) && currentMainAbilityCooldown <= 0)
+		if (Input.GetMouseButtonDown(0))
 		{
-			CastMainAbility();
-			onMainAbilityCast.Invoke();
-			currentMainAbilityCooldown = mainAbilityCooldown;
+			TriggerMainAbility();
 		}
 
-		if (Input.GetMouseButtonDown(1) && currentSecondaryAbilityCooldown <= 0)
+		if (Input.GetMouseButtonDown(1))
+		{
+			TriggerSecondaryAbility();
+		}
+	}
+	
+	public void TriggerMainAbility()
+	{
+		if (currentMainAbilityCooldown <= 0)
+		{
+			CastMainAbility();
+			OnMainAbilityCast.Invoke();
+			currentMainAbilityCooldown = mainAbilityCooldown;
+		}
+	}
+	
+	public void TriggerSecondaryAbility()
+	{
+		if (currentSecondaryAbilityCooldown <= 0)
 		{
 			CastSecondaryAbility();
-			onSecondaryAbilityCast.Invoke();
+			OnSecondaryAbilityCast.Invoke();
 			currentSecondaryAbilityCooldown = secondaryAbilityCooldown;
 		}
 	}

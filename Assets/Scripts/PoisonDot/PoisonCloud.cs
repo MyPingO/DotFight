@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PoisonCloud : MonoBehaviour
+public class PoisonCloud : Danger
 {
 	[SerializeField] private float gracePeriodTime;
 	[SerializeField] private float growthTime;
@@ -50,14 +50,20 @@ public class PoisonCloud : MonoBehaviour
 	{
 		yield return Initiate();
 		StartCoroutine(Spread());
-		Destroy(gameObject, duration);
+		DestroyDanger(duration);
 	}
 	
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (isPoisonous && other.CompareTag("Player"))
+		base.OnTriggerEnter2D(other);
+		
+		if (isPoisonous && other.CompareTag("Player") && other.gameObject != caster)
 		{
-			other.gameObject.GetComponent<PlayerBehaviour>().BecomePoisoned(duration);
+			if (other.TryGetComponent(out AIDot aiDot))
+			{
+				aiDot.BecomePoisoned(duration);
+			}
+			else other.gameObject.GetComponent<PlayerBehaviour>().BecomePoisoned(duration);
 		}
 	}
 	

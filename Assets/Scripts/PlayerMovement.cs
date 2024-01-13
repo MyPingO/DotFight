@@ -5,65 +5,65 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	[SerializeField]
-	private float moveSpeed = 5f;
+	protected float moveSpeed = 5f;
 
 	[SerializeField]
-	private float runSpeed = 5f;
+	protected float runSpeed = 5f;
 
 	[SerializeField]
-	private float walkSpeed = 2.5f;
+	protected float walkSpeed = 2.5f;
 
 	[SerializeField]
-	private float jumpForce = 5f;
+	protected float jumpForce = 5f;
 
 	[SerializeField]
-	private float wallJumpForce = 5f;
+	protected float wallJumpForce = 5f;
 
 	[SerializeField]
-	private float horizontalWallJumpForce = 5f;
+	protected float horizontalWallJumpForce = 5f;
 	public float inertia = 0.99f;
 	public bool jumpRequested = false;
 	public bool movementDisabled = false;
 	public float airControlSmoothing = 10f;
 
 	[SerializeField]
-	private float moveX = 0f;
+	protected float moveX = 0f;
 
 	[SerializeField]
-	private bool isWalking = false;
+	protected bool isWalking = false;
 
 	[SerializeField]
-	private bool isJumping = false;
+	protected bool isJumping = false;
 
 	[SerializeField]
-	private bool isWallJumping = false;
+	protected bool isWallJumping = false;
 
 	[SerializeField]
-	private bool isGrounded = false;
+	protected bool isGrounded = false;
 
 	[SerializeField]
-	private bool canAirJump = true; // New variable to save the jump
+	protected bool canAirJump = true; // New variable to save the jump
 
 	[SerializeField]
-	private Rigidbody2D rigidBody;
+	protected Rigidbody2D rigidBody;
 
 	[SerializeField]
-	private Collider2D playerCollider;
+	protected Collider2D playerCollider;
 
 	[SerializeField]
-	private LayerMask groundLayer;
+	protected LayerMask groundLayer;
 
 	[SerializeField]
-	private LayerMask wallLayer;
+	protected LayerMask wallLayer;
 
 	[SerializeField]
-	private RaycastHit2D rightRaycast;
+	protected RaycastHit2D rightRaycast;
 
 	[SerializeField]
-	private RaycastHit2D leftRaycast;
+	protected RaycastHit2D leftRaycast;
 	
 	[SerializeField]
-	private RaycastHit2D groundRaycast;
+	protected RaycastHit2D groundRaycast;
 
 	protected enum PlayerState //TODO: Implement this later if needed
 	{
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 		Falling
 	}
 
-	private void Start()
+	protected void Start()
 	{
 		rigidBody = GetComponent<Rigidbody2D>();
 		playerCollider = GetComponent<Collider2D>();
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 		wallLayer = LayerMask.GetMask("Wall");
 	}
 
-	private void Update()
+	protected virtual void Update()
 	{
 		float moveXInput = Input.GetAxisRaw("Horizontal");
 		if (IsGrounded())
@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
+	protected virtual void FixedUpdate()
 	{
 		if (movementDisabled)
 			return;
@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	private void Jump()
+	protected void Jump()
 	{
 		// Calculate additional jump force based on the player's velocity on the x-axis
 		float additionalJumpForce = Mathf.Abs(rigidBody.velocity.x) * 0.5f;
@@ -166,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
 		isJumping = true;
 	}
 
-	private void WallJump(RaycastHit2D rightRaycast, RaycastHit2D leftRaycast)
+	protected void WallJump(RaycastHit2D rightRaycast, RaycastHit2D leftRaycast)
 	{
 		// Calculate wall jump direction
 		float wallJumpDirection = 0;
@@ -194,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
 		isWallJumping = true;
 	}
 
-	private IEnumerator DisableMovementAfterWallJump()
+	protected IEnumerator DisableMovementAfterWallJump()
 	{
 		movementDisabled = true;
 		yield return new WaitForSeconds(.2f);
@@ -206,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
 		movementDisabled = false;
 	}
 
-	private bool IsGrounded()
+	public bool IsGrounded()
 	{
 		// Check if the bottom of the player touches the ground
 		float extraHeight = 0.1f;
@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
 			extraHeight,
 			groundLayer
 		);
-		Debug.DrawLine(raycastStart, downRay, hitDown ? Color.green : Color.red, 2f);
+		// Debug.DrawLine(raycastStart, downRay, hitDown ? Color.green : Color.red, 2f);
 
 		// Down-Right Raycast
 		Vector2 downRightRay =
@@ -232,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
 			extraHeight,
 			groundLayer
 		);
-		Debug.DrawLine(raycastStart, downRightRay, hitDownRight ? Color.green : Color.red, 2f);
+		// Debug.DrawLine(raycastStart, downRightRay, hitDownRight ? Color.green : Color.red, 2f);
 
 		// Down-Left Raycast
 		Vector2 downLeftRay = raycastStart + (Vector2.down + Vector2.left).normalized * extraHeight;
@@ -242,7 +242,7 @@ public class PlayerMovement : MonoBehaviour
 			extraHeight,
 			groundLayer
 		);
-		Debug.DrawLine(raycastStart, downLeftRay, hitDownLeft ? Color.green : Color.red, 2f);
+		// Debug.DrawLine(raycastStart, downLeftRay, hitDownLeft ? Color.green : Color.red, 2f);
 
 		// Checking if any of the rays hit the ground
 		isGrounded =
@@ -269,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
 		return isGrounded;
 	}
 
-	private bool IsTouchingWall()
+	protected bool IsTouchingWall()
 	{
 		// Check if the player is touching a wall
 		float extraWidth = 0.01f;

@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Poison
   - FireTrail
+  - JumpPoint
+  - SwitchPoint
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
-  - 
-  - 
+  - FireTrail
+  - Player
+  - Danger
   - 
   - 
   - 

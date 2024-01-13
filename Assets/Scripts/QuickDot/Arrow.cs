@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class Arrow : Danger
 {
 	[SerializeField] private float speed;
 	[SerializeField] private float windupTimer;
@@ -15,14 +15,20 @@ public class Arrow : MonoBehaviour
 		}
 		else windupTimer -= Time.deltaTime;
 	}
-	
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		base.OnTriggerEnter2D(other);
+		
 		if (windupTimer > 0) return;
 		if (other.gameObject.CompareTag("Player"))
 		{
-			other.gameObject.GetComponent<PlayerBehaviour>().Die();
+			if (other.gameObject.TryGetComponent(out AIDot aiDot))
+			{
+				aiDot.Die();
+			}
+			else other.gameObject.GetComponent<PlayerBehaviour>().Die();
 		}
-		Destroy(gameObject);
+		DestroyDanger();
 	}
 }
