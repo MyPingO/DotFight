@@ -111,6 +111,11 @@ public class MainMenuController : MonoBehaviour
 		//load the about scene
 		UnityEngine.SceneManagement.SceneManager.LoadScene("About");
 	}
+	public void HandleMenuButtonClick()
+	{
+		//load the about scene
+		UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+	}
 
 	public void HandleBackButtonClick()
 	{
