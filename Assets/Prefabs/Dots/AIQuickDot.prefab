@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c69f5d6cce51bae4aafd06ca328b9f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMovement: {fileID: 0}
   mainAbilityCooldown: 4
   mainAbilityDuration: 3
   currentMainAbilityCooldown: 0
@@ -93,4 +94,6 @@ MonoBehaviour:
   OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  mainAbilitySFX: {fileID: 8300000, guid: 63b96ade5b83c3143a347d9244354f59, type: 3}
+  secondaryAbilitySFX: {fileID: 8300000, guid: 072639be182acf446928d388a369ab74, type: 3}
   ArrowPrefab: {fileID: 1309765175945892258, guid: 93947e680feb8d74eb9b294f13a0c7b1, type: 3}

@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6c0aa4ed4ecef45a0ebde05a3b891a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMovement: {fileID: 0}
   mainAbilityCooldown: 4
   mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
@@ -109,6 +110,8 @@ MonoBehaviour:
   OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  mainAbilitySFX: {fileID: 8300000, guid: 487102d6f4f1d6f45b4ca8a01fa1faec, type: 3}
+  secondaryAbilitySFX: {fileID: 8300000, guid: 650632151a13ae94188f31462f2fd85d, type: 3}
   MagicBallPrefab: {fileID: 1811021797978453638, guid: df9357db3b2181d459eeb8f381c21d69, type: 3}
   BarrierPrefab: {fileID: 1309765175945892258, guid: 60123e20234a69e4481b161c64805b5a, type: 3}
   target: {fileID: 0}

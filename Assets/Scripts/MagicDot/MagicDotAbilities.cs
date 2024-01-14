@@ -69,16 +69,19 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 		if (mousePosition.y < transform.position.y && mouseHorizontalDistanceFromPlayer <= 3)
 		{
 			flatSide.tag = "Ground";
+			flatSide.layer = LayerMask.NameToLayer("Ground");
 		}
 		// Check if mouse click is close to above the player
 		else if (mousePosition.y > transform.position.y && mouseHorizontalDistanceFromPlayer <= 1.5f)
 		{
 			flatSide.tag = "Ground";
+			flatSide.layer = LayerMask.NameToLayer("Ground");
 		}
 		// If mouse click is to the sides of the player
 		else
 		{
 			flatSide.tag = "Wall";
+			flatSide.layer = LayerMask.NameToLayer("Wall");
 		}
 		
 	}

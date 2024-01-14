@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapSelection.unity
     guid: d225fec9ccf3b3648a326cd51a40d455
+  - enabled: 1
+    path: Assets/Scenes/LevelOne.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/LevelTwo.unity
+    guid: c41df41275b73584baf4ff18c351f174
+  - enabled: 1
+    path: Assets/Scenes/LevelThree.unity
+    guid: 23390189d1abd0b40b0de84ad2719859
   m_configObjects: {}

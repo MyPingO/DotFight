@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc463d5b3d9bfbe4083c047e74cbd830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMovement: {fileID: 0}
   mainAbilityCooldown: 3
   mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
@@ -113,5 +114,7 @@ MonoBehaviour:
   OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  mainAbilitySFX: {fileID: 8300000, guid: 1cca2d24daeaeda46adc1ff75ea0b05f, type: 3}
+  secondaryAbilitySFX: {fileID: 8300000, guid: c320bab08a0537a4bb17bc51042de949, type: 3}
   poisonDartPrefab: {fileID: 1309765175945892258, guid: 817d717337950f349ad4632c44cd0895, type: 3}
   poisonCloudPrefab: {fileID: 4446262920537328644, guid: a7c165c90075088428a1b36a0b79a6df, type: 3}

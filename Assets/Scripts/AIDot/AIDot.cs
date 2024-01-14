@@ -21,7 +21,10 @@ public class AIDot : Agent
 	[SerializeField]
 	private GameObject target;
 
-	[SerializeField] private Transform spawnPoint;
+	[SerializeField]
+	private Transform spawnPoint;
+
+	[SerializeField] private EventManager eventManager;
 	public UnityEvent OnAbilityHitPlayer;
 
 	public override void Initialize()
@@ -29,8 +32,15 @@ public class AIDot : Agent
 		rigidBody = GetComponent<Rigidbody2D>();
 		aiMovement = GetComponent<AIMovement>();
 		abilities = GetComponent<AIDotAbilitiesBase>();
+		eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
+		eventManager.OnTimerStop.AddListener(() => gameObject.SetActive(false));
 		
 		transform.localPosition = spawnPoint.localPosition;
+	}
+	
+	private void Start()
+	{
+		target = FindObjectOfType<PlayerBehaviour>().gameObject;
 	}
 
 	public override void OnEpisodeBegin()
@@ -135,21 +145,13 @@ public class AIDot : Agent
 
 	public void Die(float timeDelay = 0f)
 	{
-		// end episode mlagent
-		if (timeDelay != 0f)
-		{
-			StartCoroutine(DieAfterDelay(timeDelay));
-		}
-		else
-		{
-			SetRandomPosition();
-			EndEpisode();
-		}
+		StartCoroutine(DieAfterDelay(timeDelay));
 	}
 
 	private IEnumerator DieAfterDelay(float timeDelay)
 	{
 		yield return new WaitForSeconds(timeDelay);
+		eventManager.OnPlayerScore.Invoke();
 		SetRandomPosition();
 		EndEpisode();
 	}

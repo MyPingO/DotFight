@@ -223,7 +223,7 @@ MonoBehaviour:
   caster: {fileID: 0}
   target: {fileID: 0}
   speed: 10
-  lifeTime: 0
+  lifeTime: 2
 --- !u!50 &989849904999329757
 Rigidbody2D:
   serializedVersion: 4

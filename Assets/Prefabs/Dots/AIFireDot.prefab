@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2918bc865812347ae2f44d592c385e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aiMovement: {fileID: 0}
   mainAbilityCooldown: 3
   mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
@@ -113,7 +114,8 @@ MonoBehaviour:
   OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  mainAbilitySFX: {fileID: 8300000, guid: abaf4ac96ba7fd4469d83ebdbc71c5f7, type: 3}
+  secondaryAbilitySFX: {fileID: 8300000, guid: 7efe6629799e78c4d96980dc1f638b53, type: 3}
   fireBallPrefab: {fileID: 1309765175945892258, guid: ed875aedfb527544fa1254aacbdf8430, type: 3}
   fireTrailPrefab: {fileID: 1296658312277151617, guid: d160257c3c0fe474d85ed93ab9ed3e0a, type: 3}
-  AI: {fileID: 0}
   isTouchingFireTrail: 0

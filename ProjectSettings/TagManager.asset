@@ -9,6 +9,10 @@ TagManager:
   - Poison
   - FireTrail
   - RadioButton
+  - JumpPoint
+  - SwitchPoint
+  - MusicSlider
+  - SFXSlider
   layers:
   - Default
   - TransparentFX

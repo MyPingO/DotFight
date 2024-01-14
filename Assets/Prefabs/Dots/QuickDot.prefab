@@ -105,4 +105,6 @@ MonoBehaviour:
   OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
+  mainAbilitySFX: {fileID: 8300000, guid: 6ea1246bce602114a9005dd290be7d5a, type: 3}
+  secondaryAbilitySFX: {fileID: 8300000, guid: 072639be182acf446928d388a369ab74, type: 3}
   ArrowPrefab: {fileID: 1309765175945892258, guid: 93947e680feb8d74eb9b294f13a0c7b1, type: 3}

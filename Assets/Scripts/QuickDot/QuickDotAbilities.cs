@@ -33,7 +33,7 @@ public class QuickDotAbilities : PlayerAbilitiesBase
 		playerMovement.SetHorizontalWallJumpForce(defaultHorizontalWallJumpForce * 2);
 		playerMovement.UpdateMoveSpeed();
 		
-		yield return new WaitForSeconds(mainAbilityDuration);
+		yield return new WaitForSeconds(secondaryAbilityDuration);
 		
 		playerMovement.SetRunSpeed(defaultRunSpeed);
 		playerMovement.SetWalkSpeed(defaultWalkSpeed);

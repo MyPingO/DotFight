@@ -15,6 +15,14 @@ public class PlayerBehaviour : MonoBehaviour
 	[SerializeField]
 	private Transform spawnPoint;
 	
+	[SerializeField] private EventManager eventManager;
+	
+	private void Awake()
+	{
+		eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
+		eventManager.OnTimerStop.AddListener(() => gameObject.SetActive(false));
+	}
+	
 	private void Start()
 	{
 		transform.localPosition = spawnPoint.localPosition;
@@ -37,6 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
 	private IEnumerator DieCoroutine(float timeDelay)
 	{
 		yield return new WaitForSeconds(timeDelay);
+		eventManager.OnAiScore.Invoke();
 		transform.localPosition = new Vector2(Random.Range(-10f, 10f), Random.Range(-5f, 5f));
 	}
 

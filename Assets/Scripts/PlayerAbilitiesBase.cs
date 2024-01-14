@@ -16,10 +16,15 @@ public abstract class PlayerAbilitiesBase : MonoBehaviour
 	protected abstract void CastMainAbility();
 	protected abstract void CastSecondaryAbility();
 	
+	[SerializeField] protected AudioClip mainAbilitySFX;
+	[SerializeField] protected AudioClip secondaryAbilitySFX;
+	
 	protected virtual void Start() 
 	{
 		currentMainAbilityCooldown = 0;
 		currentSecondaryAbilityCooldown = 0;
+		OnMainAbilityCast.AddListener(() => AudioManager.instance.PlaySFX(mainAbilitySFX));
+		OnSecondaryAbilityCast.AddListener(() => AudioManager.instance.PlaySFX(secondaryAbilitySFX));
 	}
 	
 	protected virtual void Update() 

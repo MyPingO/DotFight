@@ -130,7 +130,7 @@ MonoBehaviour:
       m_Calls: []
   caster: {fileID: 0}
   speed: 50
-  windupTimer: 1
+  windupTimer: 0.8
 --- !u!1 &8951668906806114219
 GameObject:
   m_ObjectHideFlags: 0

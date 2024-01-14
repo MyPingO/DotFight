@@ -57,7 +57,6 @@ MonoBehaviour:
   aiName: {fileID: 7221195702230628870}
   aiScore: {fileID: 8125493790490719492}
   aiIcon: {fileID: 7895680255432255170}
-  gameManager: {fileID: 0}
 --- !u!1 &1053060568189543547
 GameObject:
   m_ObjectHideFlags: 0
