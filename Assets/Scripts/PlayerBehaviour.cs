@@ -56,7 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Poison"))
+		if (other.gameObject.CompareTag("Poison") && other.gameObject.GetComponent<Danger>().caster != gameObject)
 		{
 			timeInPoison += Time.deltaTime;
 			if (timeInPoison >= timeUntilPoisonFatal)
