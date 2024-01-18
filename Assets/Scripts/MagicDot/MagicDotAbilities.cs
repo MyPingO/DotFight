@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MagicDotAbilities : PlayerAbilitiesBase
+public class MagicDotAbilities : DotAbilitiesBase
 {
 	[SerializeField] private GameObject MagicBallPrefab;
 	[SerializeField] private GameObject BarrierPrefab;
@@ -13,15 +13,18 @@ public class MagicDotAbilities : PlayerAbilitiesBase
 	
 	private void SpawnMagicBall() 
 	{
-		GameObject magicBallGO = Instantiate(MagicBallPrefab, transform.position, Quaternion.identity);
+		Vector2 direction = GetAimDirection();
+		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+		
+		GameObject magicBallGO = Instantiate(MagicBallPrefab, transform.position, rotation);
 		MagicBall magicBall = magicBallGO.GetComponent<MagicBall>();
 		magicBall.SetTarget(target);
 		magicBall.SetCaster(gameObject);
-		magicBall.LifeTime(mainAbilityDuration);
+		magicBall.DestroyDanger(mainAbilityDuration);
 	}
 	private void GetClosestTarget(out Transform target)
 	{
-		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Dot");
 		GameObject closestPlayer = null;
 		float closestDistance = Mathf.Infinity;
 

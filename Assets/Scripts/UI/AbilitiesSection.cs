@@ -21,9 +21,10 @@ public class AbilitiesSection : MonoBehaviour
 	private float secondaryAbilityCooldownEnd;
 	void Awake()
 	{
-		Debug.Log("Awake");
+		Debug.Log("Abilities Section Awake");
 		gameManager = GameObject.FindGameObjectWithTag("GameController");
-		player = FindObjectOfType<PlayerBehaviour>().gameObject;
+		player = FindObjectOfType<PlayerDot>().gameObject;
+		
 		DotAttributes playerAttributes = gameManager.GetComponent<GameManager>().GetDotAttributes(player);
 
 		mainAbilityName.text = playerAttributes.mainAbilityName;
@@ -38,21 +39,21 @@ public class AbilitiesSection : MonoBehaviour
 		mainAbilitySlider.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = ColorUtility.TryParseHtmlString(playerAttributes.color, out Color color3) ? color3 : Color.white;
 		secondaryAbilitySlider.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = ColorUtility.TryParseHtmlString(playerAttributes.color, out Color color4) ? color4 : Color.white;
 
-		mainAbilityCooldown = player.GetComponent<PlayerAbilitiesBase>().GetMainAbilityCooldown();
-		secondaryAbilityCooldown = player.GetComponent<PlayerAbilitiesBase>().GetSecondaryAbilityCooldown();
+		mainAbilityCooldown = player.GetComponent<DotAbilitiesBase>().GetMainAbilityCooldown();
+		secondaryAbilityCooldown = player.GetComponent<DotAbilitiesBase>().GetSecondaryAbilityCooldown();
 
 	}
 
 	private void OnEnable()
 	{
-		player.GetComponent<PlayerAbilitiesBase>().OnMainAbilityCast.AddListener(HandleCastPrimaryAbility);
-		player.GetComponent<PlayerAbilitiesBase>().OnSecondaryAbilityCast.AddListener(HandleCastSecondaryAbility);
+		player.GetComponent<DotAbilitiesBase>().OnMainAbilityCast.AddListener(HandleCastPrimaryAbility);
+		player.GetComponent<DotAbilitiesBase>().OnSecondaryAbilityCast.AddListener(HandleCastSecondaryAbility);
 	}
 
 	private void OnDisable()
 	{
-		player.GetComponent<PlayerAbilitiesBase>().OnMainAbilityCast.RemoveListener(HandleCastPrimaryAbility);
-		player.GetComponent<PlayerAbilitiesBase>().OnSecondaryAbilityCast.RemoveListener(HandleCastSecondaryAbility);
+		// player.GetComponent<PlayerAbilitiesBase>().OnMainAbilityCast.RemoveListener(HandleCastPrimaryAbility);
+		// player.GetComponent<PlayerAbilitiesBase>().OnSecondaryAbilityCast.RemoveListener(HandleCastSecondaryAbility);
 	}
 
 	// Update is called once per frame

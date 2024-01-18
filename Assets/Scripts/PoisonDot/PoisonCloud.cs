@@ -53,17 +53,13 @@ public class PoisonCloud : Danger
 		DestroyDanger(duration);
 	}
 	
-	private void OnTriggerEnter2D(Collider2D other)
+	new private void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
-		
-		if (isPoisonous && other.CompareTag("Player") && other.gameObject != caster)
+		if (other.gameObject == caster) return;
+		if (isPoisonous && other.TryGetComponent(out DotBehavior dot))
 		{
-			if (other.TryGetComponent(out AIDot aiDot))
-			{
-				aiDot.BecomePoisoned(duration);
-			}
-			else other.gameObject.GetComponent<PlayerBehaviour>().BecomePoisoned(duration);
+			dot.BecomePoisoned(duration);
 		}
 	}
 	

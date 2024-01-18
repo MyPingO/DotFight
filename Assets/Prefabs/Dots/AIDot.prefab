@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: -2335482935434834457}
   - component: {fileID: 1089749833302138202}
   - component: {fileID: -2089542494080679354}
+  - component: {fileID: 5897717704917215365}
   m_Layer: 8
   m_Name: AIDot
-  m_TagString: Player
+  m_TagString: Dot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,6 +218,8 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   abilities: {fileID: 0}
   target: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  eventManager: {fileID: 0}
   OnAbilityHitPlayer:
     m_PersistentCalls:
       m_Calls: []
@@ -260,6 +263,24 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
+  moveXInput: 0
+--- !u!114 &5897717704917215365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326320239155550621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3653753f274f63047b70ff9e61f5aca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeInPoison: 0
+  timeUntilPoisonFatal: 0
+  isPoisoned: 0
+  spawnPoint: {fileID: 0}
+  eventManager: {fileID: 0}
 --- !u!1001 &8875780727984253494
 PrefabInstance:
   m_ObjectHideFlags: 0

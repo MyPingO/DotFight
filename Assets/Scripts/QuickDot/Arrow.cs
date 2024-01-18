@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Arrow : Danger
@@ -16,18 +14,14 @@ public class Arrow : Danger
 		else windupTimer -= Time.deltaTime;
 	}
 
-	void OnTriggerEnter2D(Collider2D other)
+	new void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
 		
 		if (windupTimer > 0) return;
-		if (other.gameObject.CompareTag("Player"))
+		if (other.TryGetComponent(out DotBehavior dot))
 		{
-			if (other.gameObject.TryGetComponent(out AIDot aiDot))
-			{
-				aiDot.Die();
-			}
-			else other.gameObject.GetComponent<PlayerBehaviour>().Die();
+			dot.Die();
 		}
 		DestroyDanger();
 	}

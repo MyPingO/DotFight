@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireTrail : Danger
@@ -10,16 +8,13 @@ public class FireTrail : Danger
 		DestroyDanger(duration);
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
+	new private void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
-		if (other.gameObject.CompareTag("Player") && other.gameObject != caster)
+		if (other.gameObject == caster) return;
+		if (other.TryGetComponent(out DotBehavior dotBehavior))
 		{
-			if (other.gameObject.TryGetComponent(out AIDot aiDot))
-			{
-				aiDot.Die();
-			}
-			else other.gameObject.GetComponent<PlayerBehaviour>().Die();
+			dotBehavior.Die();
 		}
 	}
 	

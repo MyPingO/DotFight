@@ -23,18 +23,14 @@ public class PoisonDart : Danger
 		
 	}
 	
-	private void OnTriggerEnter2D(Collider2D other)
+	new private void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
 		if (other.gameObject == caster) return;
 		
-		if (other.CompareTag("Player"))
+		if (other.TryGetComponent(out DotBehavior dot))
 		{
-			if (other.TryGetComponent(out AIDot aiDot))
-			{
-				aiDot.BecomePoisoned(poisonDuration);
-			}
-			else other.GetComponent<PlayerBehaviour>().BecomePoisoned(poisonDuration);
+			dot.BecomePoisoned(poisonDuration);
 		}
 		DestroyDanger();
 	}

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TargetBehaviour : MonoBehaviour
+public class Target : MonoBehaviour
 {
 	public float teleportInterval = 10f;
 	public float moveRangeX = 10f;

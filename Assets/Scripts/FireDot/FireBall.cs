@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBall : Danger
@@ -11,18 +9,14 @@ public class FireBall : Danger
 		transform.Translate(speed * Time.deltaTime * transform.up, Space.World);
 	}
 	
-	private void OnTriggerEnter2D(Collider2D other)
+	new private void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
 		if (other.gameObject == caster) return;
 		
-		if (other.CompareTag("Player"))
+		if (other.CompareTag("Dot"))
 		{
-			if (other.TryGetComponent(out AIDot aiDot))
-			{
-				aiDot.Die();
-			}
-			else other.GetComponent<PlayerBehaviour>().Die();
+			other.GetComponent<DotBehavior>().Die();
 		}
 		DestroyDanger();
 	}

@@ -6,7 +6,7 @@ public class Danger : MonoBehaviour
 	public UnityEvent OnDangerDestroyed;
 	public GameObject caster;
 	
-	protected void DestroyDanger(float delay = 0f)
+	public void DestroyDanger(float delay = 0f)
 	{
 		OnDangerDestroyed.Invoke();
 		Destroy(gameObject, delay);
@@ -14,7 +14,7 @@ public class Danger : MonoBehaviour
 	
 	protected void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Player") && other.gameObject != caster)
+		if (other.gameObject.CompareTag("Dot") && other.gameObject != caster)
 		{
 			// For AI
 			if (caster.GetComponent<AIDot>()) caster.GetComponent<AIDot>().OnAbilityHitPlayer.Invoke();

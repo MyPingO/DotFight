@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour
+public class DotBehavior : MonoBehaviour
 {
 	[SerializeField]
 	private float timeInPoison;
@@ -31,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviour
 	public void BecomePoisoned(float poisonTime)
 	{
 		isPoisoned = true;
-		PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+		DotMovement playerMovement = GetComponent<DotMovement>();
 		playerMovement.SetRunSpeed(playerMovement.GetRunSpeed() / 1.5f);
 		playerMovement.SetWalkSpeed(playerMovement.GetWalkSpeed() / 1.5f);
 		Die(poisonTime);
@@ -45,7 +45,8 @@ public class PlayerBehaviour : MonoBehaviour
 	private IEnumerator DieCoroutine(float timeDelay)
 	{
 		yield return new WaitForSeconds(timeDelay);
-		eventManager.OnAiScore.Invoke();
+		if (TryGetComponent(out AIDot _)) eventManager.OnPlayerScore.Invoke();
+		else eventManager.OnAiScore.Invoke();
 		transform.localPosition = new Vector2(Random.Range(-10f, 10f), Random.Range(-5f, 5f));
 	}
 
@@ -56,7 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Poison") && other.gameObject.GetComponent<Danger>().caster != gameObject)
+		if (other.TryGetComponent(out PoisonCloud poisonCloud ) && poisonCloud.caster != gameObject)
 		{
 			timeInPoison += Time.deltaTime;
 			if (timeInPoison >= timeUntilPoisonFatal)

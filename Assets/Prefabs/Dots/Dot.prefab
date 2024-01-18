@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 324071364825397321}
   - component: {fileID: 4046146806188354528}
   - component: {fileID: 4197269417284567541}
+  - component: {fileID: 3601181915399972804}
   m_Layer: 8
   m_Name: Dot
-  m_TagString: Player
+  m_TagString: Dot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,6 +203,20 @@ MonoBehaviour:
   timeInPoison: 0
   timeUntilPoisonFatal: 1.5
   isPoisoned: 0
+  spawnPoint: {fileID: 0}
+  eventManager: {fileID: 0}
+--- !u!114 &3601181915399972804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345883659314575836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd6ad161bcd0bc438ff96b722d08d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5305183636847781468
 PrefabInstance:
   m_ObjectHideFlags: 0

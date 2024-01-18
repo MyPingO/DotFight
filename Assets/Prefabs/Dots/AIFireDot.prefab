@@ -82,14 +82,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -3605634709610135657}
+      addedObject: {fileID: 4854395581861344496}
   m_SourcePrefab: {fileID: 100100000, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
 --- !u!1 &8423328720620209902 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
   m_PrefabInstance: {fileID: 2535023471379013491}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-3605634709610135657
+--- !u!114 &4854395581861344496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,14 +98,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8423328720620209902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2918bc865812347ae2f44d592c385e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f67646fb0208374bbc26c41499bdbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiMovement: {fileID: 0}
-  mainAbilityCooldown: 3
-  mainAbilityDuration: 2
+  controllerType: 0
+  mainAbilityCooldown: 1
+  mainAbilityDuration: 1
   currentMainAbilityCooldown: 0
-  secondaryAbilityCooldown: 10
+  secondaryAbilityCooldown: 8
   secondaryAbilityDuration: 5
   currentSecondaryAbilityCooldown: 0
   OnMainAbilityCast:
@@ -118,4 +118,5 @@ MonoBehaviour:
   secondaryAbilitySFX: {fileID: 8300000, guid: 7efe6629799e78c4d96980dc1f638b53, type: 3}
   fireBallPrefab: {fileID: 1309765175945892258, guid: ed875aedfb527544fa1254aacbdf8430, type: 3}
   fireTrailPrefab: {fileID: 1296658312277151617, guid: d160257c3c0fe474d85ed93ab9ed3e0a, type: 3}
+  playerMovement: {fileID: 0}
   isTouchingFireTrail: 0

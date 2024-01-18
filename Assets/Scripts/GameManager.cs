@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,25 +14,25 @@ public class GameManager : MonoBehaviour
 	{
 		Sprite mainAbilitySprite;
 		Sprite secondaryAbilitySprite;
-		if (dot.GetComponent<PlayerAbilitiesBase>() is QuickDotAbilities)
+		if (dot.GetComponent<DotAbilitiesBase>() is QuickDotAbilities)
 		{
 			mainAbilitySprite = Resources.Load<Sprite>("Sprites/ArrowIcon");
 			secondaryAbilitySprite = Resources.Load<Sprite>("Sprites/SpeedIcon");
 			return new DotAttributes(name: "QuickDot", color: "#FFFFFF", mainAbilityName: "Arrow", secondaryAbilityName: "Speed", mainAbilitySprite, secondaryAbilitySprite);
 		}
-		else if (dot.GetComponent<PlayerAbilitiesBase>() is FireDotAbilities)
+		else if (dot.GetComponent<DotAbilitiesBase>() is FireDotAbilities)
 		{
 			mainAbilitySprite = Resources.Load<Sprite>("Sprites/FireballIcon");
 			secondaryAbilitySprite = Resources.Load<Sprite>("Sprites/ScorchIcon");
 			return new DotAttributes(name: "FireDot", color: "#FF2C00", mainAbilityName: "Fireball", secondaryAbilityName: "Firetrail", mainAbilitySprite, secondaryAbilitySprite);
 		}
-		else if (dot.GetComponent<PlayerAbilitiesBase>() is MagicDotAbilities)
+		else if (dot.GetComponent<DotAbilitiesBase>() is MagicDotAbilities)
 		{
 			mainAbilitySprite = Resources.Load<Sprite>("Sprites/SpellIcon");
 			secondaryAbilitySprite = Resources.Load<Sprite>("Sprites/ShapeBarrierIcon");
-			return new DotAttributes(name: "MagicDot", color: "#FFA7F9", mainAbilityName: "Magic Ball", secondaryAbilityName: "Shape", mainAbilitySprite, secondaryAbilitySprite);
+			return new DotAttributes(name: "MagicDot", color: "#FFA7F9", mainAbilityName: "Magic Ball", secondaryAbilityName: "Barrier", mainAbilitySprite, secondaryAbilitySprite);
 		}
-		else if (dot.GetComponent<PlayerAbilitiesBase>() is PoisonDotAbilities)
+		else if (dot.GetComponent<DotAbilitiesBase>() is PoisonDotAbilities)
 		{
 
 			mainAbilitySprite = Resources.Load<Sprite>("Sprites/PoisonDartIcon");

@@ -78,14 +78,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7685627047678560157}
+      addedObject: {fileID: 8206967631774568181}
   m_SourcePrefab: {fileID: 100100000, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
 --- !u!1 &2224355823477163068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
   m_PrefabInstance: {fileID: 5266367587647135137}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7685627047678560157
+--- !u!114 &8206967631774568181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,15 +94,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2224355823477163068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d6c0aa4ed4ecef45a0ebde05a3b891a, type: 3}
+  m_Script: {fileID: 11500000, guid: 77117538a75f4524799c516f9fa8ae4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiMovement: {fileID: 0}
-  mainAbilityCooldown: 4
+  controllerType: 0
+  mainAbilityCooldown: 2
   mainAbilityDuration: 2
   currentMainAbilityCooldown: 0
-  secondaryAbilityCooldown: 10
-  secondaryAbilityDuration: 2
+  secondaryAbilityCooldown: 8
+  secondaryAbilityDuration: 4
   currentSecondaryAbilityCooldown: 0
   OnMainAbilityCast:
     m_PersistentCalls:
@@ -110,8 +110,8 @@ MonoBehaviour:
   OnSecondaryAbilityCast:
     m_PersistentCalls:
       m_Calls: []
-  mainAbilitySFX: {fileID: 8300000, guid: 487102d6f4f1d6f45b4ca8a01fa1faec, type: 3}
-  secondaryAbilitySFX: {fileID: 8300000, guid: 650632151a13ae94188f31462f2fd85d, type: 3}
+  mainAbilitySFX: {fileID: 8300000, guid: 53dc1a6e95e7d4e40ab0bdb6c2795f3f, type: 3}
+  secondaryAbilitySFX: {fileID: 8300000, guid: 9b2f674f4c4f97b4095b55304c5e4c00, type: 3}
   MagicBallPrefab: {fileID: 1811021797978453638, guid: df9357db3b2181d459eeb8f381c21d69, type: 3}
   BarrierPrefab: {fileID: 1309765175945892258, guid: 60123e20234a69e4481b161c64805b5a, type: 3}
   target: {fileID: 0}

@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class QuickDotAbilities : PlayerAbilitiesBase
+public class QuickDotAbilities : DotAbilitiesBase
 {
-	private PlayerMovement playerMovement;
-	[SerializeField] private GameObject ArrowPrefab;
-	private void Awake() 
+	private DotMovement movement;
+	[SerializeField] private GameObject arrowPrefab;
+	new private void Awake() 
 	{
-		playerMovement = GetComponent<PlayerMovement>();
+		base.Awake();
+		movement = GetComponent<DotMovement>();
 	}
 	protected override void CastMainAbility()
 	{
@@ -24,30 +25,30 @@ public class QuickDotAbilities : PlayerAbilitiesBase
 	private IEnumerator SpeedUp()
 	{
 		
-		float defaultRunSpeed = playerMovement.GetRunSpeed();
-		float defaultWalkSpeed = playerMovement.GetWalkSpeed();
-		float defaultHorizontalWallJumpForce = playerMovement.GetHorizontalWallJumpForce();
+		float defaultRunSpeed = movement.GetRunSpeed();
+		float defaultWalkSpeed = movement.GetWalkSpeed();
+		float defaultHorizontalWallJumpForce = movement.GetHorizontalWallJumpForce();
 		
-		playerMovement.SetRunSpeed(defaultRunSpeed * 2);
-		playerMovement.SetWalkSpeed(defaultWalkSpeed * 2);
-		playerMovement.SetHorizontalWallJumpForce(defaultHorizontalWallJumpForce * 2);
-		playerMovement.UpdateMoveSpeed();
+		movement.SetRunSpeed(defaultRunSpeed * 2);
+		movement.SetWalkSpeed(defaultWalkSpeed * 2);
+		movement.SetHorizontalWallJumpForce(defaultHorizontalWallJumpForce * 2);
+		movement.UpdateMoveSpeed();
 		
 		yield return new WaitForSeconds(secondaryAbilityDuration);
 		
-		playerMovement.SetRunSpeed(defaultRunSpeed);
-		playerMovement.SetWalkSpeed(defaultWalkSpeed);
-		playerMovement.SetHorizontalWallJumpForce(defaultHorizontalWallJumpForce);
-		playerMovement.UpdateMoveSpeed();
+		movement.SetRunSpeed(defaultRunSpeed);
+		movement.SetWalkSpeed(defaultWalkSpeed);
+		movement.SetHorizontalWallJumpForce(defaultHorizontalWallJumpForce);
+		movement.UpdateMoveSpeed();
 	}
 	
 	private void SpawnArrow() 
 	{
-		Vector2 direction = GetMouseDirectionNormalized();
+		Vector2 direction = GetAimDirection();
 		Vector2 spawnPosition = (Vector2) transform.position + direction * 1f;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 		
-		GameObject arrow = Instantiate(ArrowPrefab, spawnPosition, rotation);
+		GameObject arrow = Instantiate(arrowPrefab, spawnPosition, rotation);
 		arrow.GetComponent<Arrow>().SetCaster(gameObject);
 	}
 }

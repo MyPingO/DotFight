@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AIMovement : PlayerMovement
+public class AIMovement : DotMovement
 {
 	[SerializeField] private float moveXInput = 0f;
 

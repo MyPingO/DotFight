@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PoisonDotAbilities : PlayerAbilitiesBase
+public class PoisonDotAbilities : DotAbilitiesBase
 {
 	[SerializeField] private GameObject poisonDartPrefab;
 	[SerializeField] private GameObject poisonCloudPrefab;
@@ -19,7 +19,7 @@ public class PoisonDotAbilities : PlayerAbilitiesBase
 
 	private void SpawnPoisonDart()
 	{
-		Vector2 direction = GetMouseDirectionNormalized();
+		Vector2 direction = GetAimDirection();
 		Vector2 spawnPosition = (Vector2) transform.position + direction * .5f;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 

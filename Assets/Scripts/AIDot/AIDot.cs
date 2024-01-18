@@ -1,28 +1,19 @@
 using UnityEngine;
 using Unity.MLAgents;
 using UnityEngine.Events;
-using System.Collections;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class AIDot : Agent
 {
 	[SerializeField]
-	AIMovement aiMovement;
-
+	private DotAbilitiesBase abilities;
+	
 	[SerializeField]
 	Rigidbody2D rigidBody;
 
 	[SerializeField]
-	private AIDotAbilitiesBase abilities;
-
-	[SerializeField]
 	private GameObject target;
-
-	[SerializeField]
-	private Transform spawnPoint;
 
 	[SerializeField] private EventManager eventManager;
 	public UnityEvent OnAbilityHitPlayer;
@@ -30,17 +21,14 @@ public class AIDot : Agent
 	public override void Initialize()
 	{
 		rigidBody = GetComponent<Rigidbody2D>();
-		aiMovement = GetComponent<AIMovement>();
-		abilities = GetComponent<AIDotAbilitiesBase>();
+		abilities = GetComponent<DotAbilitiesBase>();
 		eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
 		eventManager.OnTimerStop.AddListener(() => gameObject.SetActive(false));
-		
-		transform.localPosition = spawnPoint.localPosition;
 	}
 	
 	private void Start()
 	{
-		target = FindObjectOfType<PlayerBehaviour>().gameObject;
+		target = FindObjectOfType<PlayerDot>().gameObject;
 	}
 
 	public override void OnEpisodeBegin()
@@ -71,19 +59,16 @@ public class AIDot : Agent
 	}
 
 	public float angleThreshold = 20f;
-
+	[SerializeField] private float mouseX;
+	[SerializeField] private float mouseY;
 	public override void OnActionReceived(ActionBuffers actionBuffers)
 	{
 		// int moveXInput = actionBuffers.DiscreteActions[0] - 1;
 		// jumpRequested = actionBuffers.DiscreteActions[1] == 1;
 		// bool leftShiftPressed = actionBuffers.DiscreteActions[2] == 1;
 		int mouseButton = actionBuffers.DiscreteActions[0];
-		float mouseX = actionBuffers.ContinuousActions[0];
-		float mouseY = actionBuffers.ContinuousActions[1];
-
-		// // --LOOKING-- //
-		abilities.SetAIMousePosition(mouseX, mouseY);
-		abilities.SetMouseButtonRecieved(mouseButton);
+		mouseX = actionBuffers.ContinuousActions[0];
+		mouseY = actionBuffers.ContinuousActions[1];
 
 		// // --REWARDS-- //
 		// // Calculate the aiming direction
@@ -125,57 +110,18 @@ public class AIDot : Agent
 		}
 	}
 
-	// --BEHAVIOUR-- //
-	[SerializeField]
-	private float timeInPoison;
-
-	[SerializeField]
-	private float timeUntilPoisonFatal;
-
-	[SerializeField]
-	private bool isPoisoned;
-
-	public void BecomePoisoned(float poisonTime)
-	{
-		isPoisoned = true;
-		aiMovement.SetRunSpeed(aiMovement.GetRunSpeed() / 1.5f);
-		aiMovement.SetWalkSpeed(aiMovement.GetWalkSpeed() / 1.5f);
-		Die(poisonTime);
-	}
-
-	public void Die(float timeDelay = 0f)
-	{
-		StartCoroutine(DieAfterDelay(timeDelay));
-	}
-
-	private IEnumerator DieAfterDelay(float timeDelay)
-	{
-		yield return new WaitForSeconds(timeDelay);
-		eventManager.OnPlayerScore.Invoke();
-		SetRandomPosition();
-		EndEpisode();
-	}
-
-	private void SetRandomPosition()
-	{
-		transform.localPosition = new Vector2(Random.Range(-10f, 10f), Random.Range(-5.5f, 5.5f));
-	}
-
-	private void OnTriggerStay2D(Collider2D other)
-	{
-		if (other.gameObject.CompareTag("Poison"))
-		{
-			timeInPoison += Time.deltaTime;
-			// print("Lost Reward For Staying In Poison");
-			if (timeInPoison >= timeUntilPoisonFatal)
-			{
-				Die();
-			}
-		}
-	}
-
 	public GameObject GetTarget()
 	{
 		return target;
+	}
+	
+	public Vector2 GetMouseAimDirectionNormalized()
+	{
+		return new Vector2(mouseX, mouseY).normalized;
+	}
+	
+	public Vector2 GetMouseAimCoordinates()
+	{
+		return new Vector2(mouseX, mouseY);
 	}
 }

@@ -1,51 +1,47 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MagicBall : Danger
 {
-	[SerializeField] private Transform target;
-	[SerializeField] private float speed;
-	[SerializeField] private float lifeTime;
-	
-	private void Start()
+	[SerializeField]
+	private Transform target;
+
+	[SerializeField]
+	private float speed;
+
+	[SerializeField]
+	private Rigidbody2D rigidBody;
+
+	void Awake()
 	{
-		DestroyDanger(lifeTime);
+		rigidBody = GetComponent<Rigidbody2D>();
 	}
 
 	private void Update()
 	{
-		if (target == null) {
+		if (target == null)
+		{
 			Destroy(gameObject);
 			return;
 		}
 
-		transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-		lifeTime -= Time.deltaTime;
+		rigidBody.velocity = speed * (target.position - transform.position).normalized;
+		transform.rotation = Quaternion.LookRotation(Vector3.forward, rigidBody.velocity);
 	}
-	
+
 	public void SetTarget(Transform target)
 	{
 		this.target = target;
 	}
-	
-	
-	public void LifeTime(float time)
-	{
-		lifeTime = time;
-	}
-	
-	private void OnTriggerEnter2D(Collider2D other)
+
+	private new void OnTriggerEnter2D(Collider2D other)
 	{
 		base.OnTriggerEnter2D(other);
-		if (other.gameObject == caster) return;
-		
-		if (other.CompareTag("Player"))
+		if (other.gameObject == caster)
+			return;
+
+		if (other.TryGetComponent(out DotBehavior dot))
 		{
-			if (other.TryGetComponent(out AIDot aiDot))
-			{
-				aiDot.Die();
-			}
-			else other.GetComponent<PlayerBehaviour>().Die();
+			dot.Die();
 		}
 		Destroy(gameObject);
 	}

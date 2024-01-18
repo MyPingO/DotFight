@@ -1,8 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class DotMovement : MonoBehaviour
 {
 	[SerializeField]
 	protected float moveSpeed = 5f;

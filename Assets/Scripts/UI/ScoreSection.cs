@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreSection : MonoBehaviour
@@ -24,7 +24,7 @@ public class ScoreSection : MonoBehaviour
 	{
 		gameManager = GameObject.FindGameObjectWithTag("GameController");
 		eventManager = gameManager.GetComponent<EventManager>();
-		player = FindObjectOfType<PlayerBehaviour>().gameObject;
+		player = FindObjectOfType<PlayerDot>().gameObject;
 		DotAttributes playerAttributes = gameManager.GetComponent<GameManager>().GetDotAttributes(player);
 		playerName.text = "You";
 		playerIcon.color = ColorUtility.TryParseHtmlString(playerAttributes.color, out Color color) ? color : Color.white;

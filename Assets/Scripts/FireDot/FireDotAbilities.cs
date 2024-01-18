@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class FireDotAbilities : PlayerAbilitiesBase
+public class FireDotAbilities : DotAbilitiesBase
 {
 	[SerializeField] private GameObject fireBallPrefab;
 	[SerializeField] private GameObject fireTrailPrefab;
-	[SerializeField] private PlayerMovement playerMovement;
+	[SerializeField] private DotMovement playerMovement;
 	[SerializeField] private bool isTouchingFireTrail;
 	
-	private void Awake()
+	new private void Awake()
 	{
-		playerMovement = GetComponent<PlayerMovement>();
+		base.Awake();
+		playerMovement = GetComponent<DotMovement>();
 	}
 	
 	protected override void CastMainAbility()
@@ -20,7 +21,7 @@ public class FireDotAbilities : PlayerAbilitiesBase
 	
 	private void SpawnFireBall()
 	{
-		Vector2 direction = GetMouseDirectionNormalized();
+		Vector2 direction = GetAimDirection();
 		Vector2 spawnPosition = (Vector2) transform.position;
 		Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
 
