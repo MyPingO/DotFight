@@ -1343,6 +1343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3729382923880696654}
     m_Modifications:
+    - target: {fileID: 1467450803315779484, guid: a603b4779ba3f0d489070da135156b13, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1861544088668816981}
     - target: {fileID: 5445712538697113525, guid: a603b4779ba3f0d489070da135156b13, type: 3}
       propertyPath: m_Name
       value: FireDot
@@ -1403,6 +1407,11 @@ PrefabInstance:
 --- !u!4 &6797765215522208097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8884517108264795208, guid: a603b4779ba3f0d489070da135156b13, type: 3}
+  m_PrefabInstance: {fileID: 2673632184190223657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7965083224308931228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5445712538697113525, guid: a603b4779ba3f0d489070da135156b13, type: 3}
   m_PrefabInstance: {fileID: 2673632184190223657}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3611802774136528197
@@ -2085,6 +2094,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5991433428397595063, guid: c7ae779c29d8ffb4383daac6be9c39f1, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1861544088668816981}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2093,6 +2106,11 @@ PrefabInstance:
 --- !u!4 &679893720767153257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4338254460057109091, guid: c7ae779c29d8ffb4383daac6be9c39f1, type: 3}
+  m_PrefabInstance: {fileID: 3844918283990795786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4156923833560213396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 931041145052144030, guid: c7ae779c29d8ffb4383daac6be9c39f1, type: 3}
   m_PrefabInstance: {fileID: 3844918283990795786}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6136069999046197026
@@ -2155,6 +2173,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7290556975899557153, guid: ea0007c21e157774b9a7fbfb98ca6024, type: 3}
+      propertyPath: FireDot
+      value: 
+      objectReference: {fileID: 7965083224308931228}
+    - target: {fileID: 7290556975899557153, guid: ea0007c21e157774b9a7fbfb98ca6024, type: 3}
+      propertyPath: MagicDot
+      value: 
+      objectReference: {fileID: 6694891089628417833}
+    - target: {fileID: 7290556975899557153, guid: ea0007c21e157774b9a7fbfb98ca6024, type: 3}
+      propertyPath: QuickDot
+      value: 
+      objectReference: {fileID: 4156923833560213396}
+    - target: {fileID: 7290556975899557153, guid: ea0007c21e157774b9a7fbfb98ca6024, type: 3}
+      propertyPath: PoisonDot
+      value: 
+      objectReference: {fileID: 4011474247394913703}
     - target: {fileID: 7290556975899557153, guid: ea0007c21e157774b9a7fbfb98ca6024, type: 3}
       propertyPath: gameTimer
       value: 90
@@ -2314,6 +2348,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3729382923880696654}
     m_Modifications:
+    - target: {fileID: 615599962572928331, guid: f96b955486d1ede4ab4cbf8ebdc6f391, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1861544088668816981}
     - target: {fileID: 6288552228948413794, guid: f96b955486d1ede4ab4cbf8ebdc6f391, type: 3}
       propertyPath: m_Name
       value: PoisonDot
@@ -2376,6 +2414,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7465357811222343327, guid: f96b955486d1ede4ab4cbf8ebdc6f391, type: 3}
   m_PrefabInstance: {fileID: 6984786686898069701}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4011474247394913703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6288552228948413794, guid: f96b955486d1ede4ab4cbf8ebdc6f391, type: 3}
+  m_PrefabInstance: {fileID: 6984786686898069701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8283290915042540824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2436,11 +2479,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8201985943054273048, guid: 2810ee9be52c0474f8ddaab86306cab6, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1861544088668816981}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2810ee9be52c0474f8ddaab86306cab6, type: 3}
+--- !u!1 &6694891089628417833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3322863548499915313, guid: 2810ee9be52c0474f8ddaab86306cab6, type: 3}
+  m_PrefabInstance: {fileID: 8283290915042540824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7797468693408296148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2216339763005231564, guid: 2810ee9be52c0474f8ddaab86306cab6, type: 3}
@@ -2534,6 +2586,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8284038825706895350, guid: 22d9f699fe8d44f40a9e294f985fe117, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 805984926487876845}
     - target: {fileID: 8423328720620209902, guid: 22d9f699fe8d44f40a9e294f985fe117, type: 3}
       propertyPath: m_Name
       value: AIFireDot

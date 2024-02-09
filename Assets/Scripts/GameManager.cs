@@ -71,11 +71,18 @@ public class GameManager : MonoBehaviour
 				QuickDot.SetActive(true);
 				break;
 			default:
-				Debug.LogError("No player character selected");
+				Debug.LogWarning("No player character selected");
 				break;
 		}
 		
 	}
+	
+	private void OnApplicationQuit()
+	{
+		PlayerPrefs.DeleteKey("SelectedDot");
+		PlayerPrefs.DeleteKey("SelectedMap");
+	}
+	
 	public void LoadScene(string sceneName)
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);

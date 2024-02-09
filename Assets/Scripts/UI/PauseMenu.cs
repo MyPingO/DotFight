@@ -29,9 +29,16 @@ public class PauseMenu : MonoBehaviour
 
 	void Start()
 	{
-		//set the value of the sound slider to the current volume
-		musicSlider.value = audioManager.musicSource.volume;
-		sfxSlider.value = audioManager.sfxSource.volume;
+		try 
+		{
+			//set the value of the sound slider to the current volume
+			musicSlider.value = audioManager.musicSource.volume;
+			sfxSlider.value = audioManager.sfxSource.volume;
+		}
+		catch (System.NullReferenceException e)
+		{
+			Debug.LogWarning("NullReferenceException: " + e);
+		}
 	}
 
 	// Update is called once per frame
