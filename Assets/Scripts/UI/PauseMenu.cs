@@ -23,6 +23,15 @@ public class PauseMenu : MonoBehaviour
 	{
 		audioManager = AudioManager.instance;
 
+		// listen for slider change events
+		musicSlider.onValueChanged.AddListener((float f) => 
+		{
+			audioManager.musicSource.volume = f;
+		});
+		sfxSlider.onValueChanged.AddListener((float f) => 
+		{
+			audioManager.sfxSource.volume = f;
+		});
 		musicSlider.gameObject.SetActive(false);
 		sfxSlider.gameObject.SetActive(false);
 	}
@@ -34,6 +43,7 @@ public class PauseMenu : MonoBehaviour
 			//set the value of the sound slider to the current volume
 			musicSlider.value = audioManager.musicSource.volume;
 			sfxSlider.value = audioManager.sfxSource.volume;
+			
 		}
 		catch (System.NullReferenceException e)
 		{
@@ -47,12 +57,6 @@ public class PauseMenu : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape) && !gameOverPanel.activeSelf)
 		{
 			TogglePauseMenu();
-		}
-		if (pauseMenuPanel.activeSelf)
-		{
-			//set the value of the sound slider to the current volume
-			audioManager.musicSource.volume = musicSlider.value;
-			audioManager.sfxSource.volume = sfxSlider.value;
 		}
 	}
 

@@ -26,6 +26,18 @@ public class MainMenuController : MonoBehaviour
 
 		musicSlider = GameObject.FindGameObjectWithTag("MusicSlider").GetComponent<Slider>();
 		sfxSlider = GameObject.FindGameObjectWithTag("SFXSlider").GetComponent<Slider>();
+		
+		// listen for slider change events
+		musicSlider.onValueChanged.AddListener((float f) => 
+		{
+			audioManager.musicSource.volume = f;
+		});
+		sfxSlider.onValueChanged.AddListener((float f) => 
+		{
+			audioManager.sfxSource.volume = f;
+		});
+		musicSlider.gameObject.SetActive(false);
+		sfxSlider.gameObject.SetActive(false);
 
 		musicSlider.gameObject.SetActive(false);
 		sfxSlider.gameObject.SetActive(false);
@@ -63,13 +75,6 @@ public class MainMenuController : MonoBehaviour
 		{
 			PlayerPrefs.DeleteAll();
 		}
-	}
-
-	private void Update()
-	{
-		//set the value of the sound slider to the current volume
-		audioManager.musicSource.volume = musicSlider.value;
-		audioManager.sfxSource.volume = sfxSlider.value;
 	}
 
 	public void HandleSoundButtonClick()
