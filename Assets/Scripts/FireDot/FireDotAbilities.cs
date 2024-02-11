@@ -7,11 +7,14 @@ public class FireDotAbilities : DotAbilitiesBase
 	[SerializeField] private GameObject fireTrailPrefab;
 	[SerializeField] private DotMovement playerMovement;
 	[SerializeField] private bool isTouchingFireTrail;
+	[SerializeField] private float fireTrailSpawnDistance;
+	[SerializeField] private Vector2 lastFireTrailSpawnPosition;
 	
 	new private void Awake()
 	{
 		base.Awake();
 		playerMovement = GetComponent<DotMovement>();
+		fireTrailSpawnDistance = fireTrailPrefab.GetComponent<BoxCollider2D>().size.x / 2;
 	}
 	
 	protected override void CastMainAbility()
@@ -36,16 +39,12 @@ public class FireDotAbilities : DotAbilitiesBase
 	private IEnumerator LeaveFireTrail()
 	{
 		float elapsedTime = 0f;
-		float fireTrailSpawnInterval = 0.1f;
 		while (elapsedTime < secondaryAbilityDuration)
 		{
-			if (playerMovement.IsPlayerGrounded() && !IsTouchingFireTrail())
+			if(Vector3.Distance(transform.position, lastFireTrailSpawnPosition) >= fireTrailSpawnDistance && !IsTouchingFireTrail())
 			{
 				SpawnFireTrail();
-				fireTrailSpawnInterval = 0.1f;
 			}
-			fireTrailSpawnInterval -= Time.deltaTime;
-			
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
@@ -53,31 +52,12 @@ public class FireDotAbilities : DotAbilitiesBase
 
 	private bool IsTouchingFireTrail()
 	{
-		float raycastDistance = 0.05f;
 		LayerMask fireTrailLayerMask = LayerMask.GetMask("FireTrail");
+		float radius = GetComponent<Collider2D>().bounds.size.x;
 		
-		Collider2D playerCollider = GetComponent<Collider2D>();
-		Vector2 raycastStartLeft = playerCollider.bounds.center - new Vector3(playerCollider.bounds.extents.x, 0, 0);
-		Vector2 raycastStartRight = playerCollider.bounds.center + new Vector3(playerCollider.bounds.extents.x, 0, 0);
-		
-		RaycastHit2D leftRaycastHit = Physics2D.Raycast(raycastStartLeft, Vector2.left, raycastDistance, fireTrailLayerMask);
-		RaycastHit2D rightRaycastHit = Physics2D.Raycast(raycastStartRight, Vector2.right, raycastDistance, fireTrailLayerMask);
-		
-		// // Draw raycasts
-		// Debug.DrawRay(raycastStartLeft, Vector2.left * raycastDistance, leftRaycastHit.collider != null ? Color.green : Color.red);
-		// Debug.DrawRay(raycastStartRight, Vector2.right * raycastDistance, rightRaycastHit.collider != null ? Color.green : Color.red);
-		
-		// // print what the raycasts hit
-		// if (leftRaycastHit.collider != null)
-		// {
-		// 	print("Left raycast hit: " + leftRaycastHit.collider.gameObject.name);
-		// }
-		// if (rightRaycastHit.collider != null)
-		// {
-		// 	print("Right raycast hit: " + rightRaycastHit.collider.gameObject.name);
-		// }
-		
-		return leftRaycastHit.collider != null || rightRaycastHit.collider != null;
+		// use overlapcircle
+		Collider2D fireTrailCollider = Physics2D.OverlapCircle(transform.position, radius, fireTrailLayerMask);
+		return fireTrailCollider != null;
 	}
 	
 	private void SpawnFireTrail()
@@ -89,5 +69,6 @@ public class FireDotAbilities : DotAbilitiesBase
 			FireTrail fireTrail = fireTrailGO.GetComponent<FireTrail>();
 			fireTrail.SetCaster(gameObject);
 		}
+		lastFireTrailSpawnPosition = groundRaycastHit.point;
 	}
 }

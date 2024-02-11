@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class FireTrail : Danger
 {
 	[SerializeField] private float duration;
