@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2483870445149106372, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 17339441155705990228
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897717704917215365, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: quickDotPrefab
+      value: 
+      objectReference: {fileID: 2821403822576874707}
     - target: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Name
       value: AIQuickDot

@@ -25,11 +25,6 @@ public class AIDot : Agent
 		eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
 		eventManager.OnTimerStop.AddListener(() => gameObject.SetActive(false));
 	}
-	
-	private void Start()
-	{
-		target = FindObjectOfType<PlayerDot>().gameObject;
-	}
 
 	public override void OnEpisodeBegin()
 	{
@@ -108,6 +103,11 @@ public class AIDot : Agent
 		{
 			abilities.TriggerMainAbility();
 		}
+	}
+	
+	public void SetTarget(GameObject newTarget)
+	{
+		target = newTarget;
 	}
 
 	public GameObject GetTarget()

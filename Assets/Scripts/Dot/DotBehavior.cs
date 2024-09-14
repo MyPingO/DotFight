@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 public class DotBehavior : MonoBehaviour
-{
+{	
 	[SerializeField]
 	private float timeInPoison;
 
@@ -13,7 +13,7 @@ public class DotBehavior : MonoBehaviour
 	private bool isPoisoned;
 
 	[SerializeField]
-	private Transform spawnPoint;
+	private Transform spawnPoint; //should set this programmatically
 	
 	[SerializeField] private EventManager eventManager;
 	
@@ -21,11 +21,6 @@ public class DotBehavior : MonoBehaviour
 	{
 		eventManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<EventManager>();
 		eventManager.OnTimerStop.AddListener(() => gameObject.SetActive(false));
-	}
-	
-	private void Start()
-	{
-		transform.localPosition = spawnPoint.localPosition;
 	}
 
 	public void BecomePoisoned(float poisonTime)

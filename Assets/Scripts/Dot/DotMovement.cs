@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using FishNet.Object;
 
-public class DotMovement : MonoBehaviour
+public class DotMovement : NetworkBehaviour
 {
 	[SerializeField]
 	protected float moveSpeed = 5f;

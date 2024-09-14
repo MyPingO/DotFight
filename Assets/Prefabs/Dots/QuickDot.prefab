@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6782446144019381894, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 8409377071639329904
+      objectReference: {fileID: 0}
     - target: {fileID: 1023245624117801568, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -20,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4197269417284567541, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
+      propertyPath: quickDotPrefab
+      value: 
+      objectReference: {fileID: 931041145052144030}
     - target: {fileID: 6138117995851209249, guid: 491115c470b61294ea66ed6200c375fc, type: 3}
       propertyPath: m_RootOrder
       value: 0

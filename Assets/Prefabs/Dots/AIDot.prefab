@@ -214,19 +214,16 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 10000
-  aiMovement: {fileID: 0}
-  rigidBody: {fileID: 0}
   abilities: {fileID: 0}
+  rigidBody: {fileID: 0}
   target: {fileID: 0}
-  spawnPoint: {fileID: 0}
   eventManager: {fileID: 0}
   OnAbilityHitPlayer:
     m_PersistentCalls:
       m_Calls: []
   angleThreshold: 15
-  timeInPoison: 0
-  timeUntilPoisonFatal: 0
-  isPoisoned: 0
+  mouseX: 0
+  mouseY: 0
 --- !u!114 &-2089542494080679354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b08bd6e8d7b4614596c7adf79720b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 0}
+  _networkObjectCache: {fileID: 0}
   moveSpeed: 5
   runSpeed: 5
   walkSpeed: 2.5

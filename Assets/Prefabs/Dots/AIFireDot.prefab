@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.20784314
       objectReference: {fileID: 0}
+    - target: {fileID: 2483870445149106372, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 5257712167789235736
+      objectReference: {fileID: 0}
     - target: {fileID: 5606881593683969594, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -28,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.2901961
       objectReference: {fileID: 0}
+    - target: {fileID: 5897717704917215365, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: pyroDotPrefab
+      value: 
+      objectReference: {fileID: 8423328720620209902}
     - target: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Name
       value: AIFireDot
@@ -120,3 +128,5 @@ MonoBehaviour:
   fireTrailPrefab: {fileID: 1296658312277151617, guid: d160257c3c0fe474d85ed93ab9ed3e0a, type: 3}
   playerMovement: {fileID: 0}
   isTouchingFireTrail: 0
+  fireTrailSpawnDistance: 0
+  lastFireTrailSpawnPosition: {x: 0, y: 0}

@@ -11,10 +11,10 @@ public abstract class DotAbilitiesBase : MonoBehaviour
 		AI
 	}
 
-	protected Func<Vector2> GetAimDirection;
-
 	[SerializeField]
 	private ControllerType controllerType;
+	
+	protected Func<Vector2> GetAimDirection;
 
 	[SerializeField]
 	protected float mainAbilityCooldown;

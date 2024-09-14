@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.44705883
       objectReference: {fileID: 0}
+    - target: {fileID: 2483870445149106372, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 16302713551768369436
+      objectReference: {fileID: 0}
     - target: {fileID: 5606881593683969594, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Color.b
       value: 0.9490196
@@ -24,6 +28,10 @@ PrefabInstance:
       propertyPath: m_Color.g
       value: 0.25882354
       objectReference: {fileID: 0}
+    - target: {fileID: 5897717704917215365, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: mageDotPrefab
+      value: 
+      objectReference: {fileID: 2224355823477163068}
     - target: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Name
       value: AIMagicDot

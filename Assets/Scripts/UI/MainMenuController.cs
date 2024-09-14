@@ -32,16 +32,15 @@ public class MainMenuController : MonoBehaviour
 		{
 			audioManager.musicSource.volume = f;
 		});
+		
 		sfxSlider.onValueChanged.AddListener((float f) => 
 		{
 			audioManager.sfxSource.volume = f;
 		});
+		
 		musicSlider.gameObject.SetActive(false);
 		sfxSlider.gameObject.SetActive(false);
-
-		musicSlider.gameObject.SetActive(false);
-		sfxSlider.gameObject.SetActive(false);
-
+		
 		foreach (Button button in menuButtons)
 		{
 			EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();

@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.53333336
       objectReference: {fileID: 0}
+    - target: {fileID: 2483870445149106372, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: <AssetPathHash>k__BackingField
+      value: 17262178219104013068
+      objectReference: {fileID: 0}
     - target: {fileID: 5606881593683969594, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Color.b
       value: 0.32156864
@@ -28,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5897717704917215365, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
+      propertyPath: poisonDotPrefab
+      value: 
+      objectReference: {fileID: 2352480223817925824}
     - target: {fileID: 6326320239155550621, guid: 64cb9301cab07a94d89ca9221dcacada, type: 3}
       propertyPath: m_Name
       value: AIPoisonDot

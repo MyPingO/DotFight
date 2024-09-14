@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4046146806188354528}
   - component: {fileID: 4197269417284567541}
   - component: {fileID: 3601181915399972804}
+  - component: {fileID: -6782446144019381894}
   m_Layer: 8
   m_Name: Dot
   m_TagString: Dot
@@ -164,6 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ff388df76194e44b2854aea73bc35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: -6782446144019381894}
+  _networkObjectCache: {fileID: 0}
   moveSpeed: 5
   runSpeed: 5
   walkSpeed: 2.5
@@ -200,6 +204,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3653753f274f63047b70ff9e61f5aca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quickDotPrefab: {fileID: 931041145052144030, guid: c7ae779c29d8ffb4383daac6be9c39f1, type: 3}
+  poisonDotPrefab: {fileID: 6288552228948413794, guid: f96b955486d1ede4ab4cbf8ebdc6f391, type: 3}
+  mageDotPrefab: {fileID: 3322863548499915313, guid: 2810ee9be52c0474f8ddaab86306cab6, type: 3}
+  pyroDotPrefab: {fileID: 5445712538697113525, guid: a603b4779ba3f0d489070da135156b13, type: 3}
+  dot: {fileID: 0}
   timeInPoison: 0
   timeUntilPoisonFatal: 1.5
   isPoisoned: 0
@@ -217,6 +226,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd6ad161bcd0bc438ff96b722d08d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6782446144019381894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345883659314575836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsNested>k__BackingField: 0
+  <ComponentIndex>k__BackingField: 0
+  <PredictedSpawn>k__BackingField: {fileID: 0}
+  _networkBehaviours: []
+  <ParentNetworkObject>k__BackingField: {fileID: 0}
+  <ChildNetworkObjects>k__BackingField: []
+  SerializedTransformProperties:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
+    LocalScale: {x: 0, y: 0, z: 0}
+  _isNetworked: 1
+  _isGlobal: 0
+  _initializeOrder: 0
+  _defaultDespawnType: 0
+  NetworkObserver: {fileID: 0}
+  <PrefabId>k__BackingField: 0
+  <SpawnableCollectionId>k__BackingField: 0
+  _scenePathHash: 0
+  <SceneId>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 7258715206273976820
 --- !u!1001 &5305183636847781468
 PrefabInstance:
   m_ObjectHideFlags: 0

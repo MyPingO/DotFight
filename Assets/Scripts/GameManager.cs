@@ -3,11 +3,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	private EventManager eventManager;
-	public GameObject FireDot;
-	public GameObject MagicDot;
-	public GameObject PoisonDot;
-	public GameObject QuickDot;
-	
 	public float gameTimer = 90f;
 
 	public DotAttributes GetDotAttributes(GameObject dot)
@@ -50,31 +45,7 @@ public class GameManager : MonoBehaviour
 	{
 		eventManager = GetComponent<EventManager>();
 		eventManager.OnTimerSet.Invoke(gameTimer);
-		eventManager.OnTimerStart.Invoke();
-		
-		// Find what character the player chose is playerprefs
-		string playerCharacter = PlayerPrefs.GetString("SelectedDot");
-		
-		// Set active the player character in the scene
-		switch (playerCharacter)
-		{
-			case "FireDot":
-				FireDot.SetActive(true);
-				break;
-			case "MagicDot":
-				MagicDot.SetActive(true);
-				break;
-			case "PoisonDot":
-				PoisonDot.SetActive(true);
-				break;
-			case "QuickDot":
-				QuickDot.SetActive(true);
-				break;
-			default:
-				Debug.LogWarning("No player character selected");
-				break;
-		}
-		
+		eventManager.OnTimerStart.Invoke();	
 	}
 	
 	private void OnApplicationQuit()
